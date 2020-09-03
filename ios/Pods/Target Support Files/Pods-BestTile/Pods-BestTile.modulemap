@@ -1,0 +1,6 @@
+module Pods_BestTile {
+  umbrella header "Pods-BestTile-umbrella.h"
+
+  export *
+  module * { export * }
+}
