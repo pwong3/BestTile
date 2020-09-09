@@ -1,0 +1,115 @@
+import React, { PureComponent } from 'react';
+import { FlatList, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
+import { Card } from './common/Card';
+
+class ProductListItem extends PureComponent {
+    render() {
+        const { productBrandText, productNameText, productDescText, imageStyle } = styles; //object destructuring
+        const { item, itemScreen } = this.props;
+        return (
+            <TouchableOpacity onPress={() => this.props.navigation.navigate(itemScreen, { itemPassed: item })}>
+                <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
+                    <View>
+                        <Image
+                            source={{ uri: item.imageUrl[0].url }}
+                            style={imageStyle}
+                        />
+                    </View>
+                    <View style={{
+                        flexDirection: 'column',
+                        paddingTop: 4,
+                    }}>
+                        {(item.productBrand === '' || item.productDepartment === 'Tiles') ?
+                            <View>
+                                <View style={{
+                                    flexDirection: 'row',
+                                    width: Dimensions.get('window').width - 125
+                                }}>
+                                    <Text style={productBrandText}>
+                                        {item.productName}
+                                    </Text>
+                                </View>
+                            </View>
+                            :
+                            <View>
+                                <Text style={productBrandText}>
+                                    {item.productBrand}
+                                </Text>
+                                <View style={{
+                                    flexDirection: 'row',
+                                    width: Dimensions.get('window').width - 135
+                                }}>
+                                    <Text style={productNameText}>
+                                        {item.productName}
+                                    </Text>
+                                </View>
+                            </View>
+                        }
+                        {item.productModelNumber === '' ? null :
+                            <Text style={productDescText}>
+                                Model# {item.productModelNumber}
+                            </Text>
+                        }
+                        {item.productSize === '' ? null :
+                            <Text style={productDescText}>
+                                {item.productSize}
+                            </Text>
+                        }
+                        {item.productMaterial === '' ? null :
+                            <Text style={productDescText}>
+                                {item.productMaterial}
+                            </Text>
+                        }
+                        {item.productMadeIn === '' ? null :
+                            <Text style={productDescText}>
+                                Made in {item.productMadeIn}
+                            </Text>
+                        }
+                    </View>
+                </View>
+            </TouchableOpacity>
+        )
+    }
+}
+
+const styles = {
+    productBrandText: {
+        flex: 1,
+        color: 'black',
+        paddingLeft: 10,
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    productNameText: {
+        flex: 1,
+        color: 'black',
+        paddingLeft: 10,
+        fontSize: 16,
+    },
+    productDescText: {
+        color: 'black',
+        paddingLeft: 10,
+        paddingTop: 0,
+        fontSize: 16,
+    },
+    productPriceText: {
+        color: 'black',
+        fontSize: 16,
+        paddingTop: 4,
+        fontWeight: 'bold'
+    },
+    productTextView: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
+    },
+    imageStyle: {
+        width: 100,
+        height: 100,
+        margin: 10,
+        resizeMode: 'contain'
+    }
+
+};
+
+export default ProductListItem;
