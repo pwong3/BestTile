@@ -1,1 +1,1 @@
-../../../FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h
+../../../FirebaseCore/Firebase/Core/Public/FIRLoggerLevel.h

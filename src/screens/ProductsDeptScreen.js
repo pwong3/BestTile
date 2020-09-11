@@ -22,20 +22,20 @@ class ProductsDeptScreen extends Component {
         const cardWidth = this.state.width / 2.0;
         const depts =
             [
-                { dept: 'Tiles', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/Pawn2.jpg') },
-                { dept: 'Stone Tiles', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/Stone/S1120-Ledge-Panel.jpg') },
-                { dept: 'Bath Vanities', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/Vanities/MJ.jpg') },
-                { dept: 'Vanity Tops', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/VanityTop.jpg') },
-                { dept: 'Faucets', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/Faucets/Concetto.jpg') },
-                { dept: 'Schluter Systems', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/SchluterSystem.jpeg') },
-                { dept: 'Countertops', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/Countertop.jpg') },
-                { dept: 'Kitchen Sinks', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/Sinks/m2522-8.png') },
-                { dept: 'Kitchen Cabinets', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/WhiteKitCab.jpg') },
-                { dept: 'Toilets', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/Toilets/UltraMaxII.png') },
-                { dept: 'Grout & Mortars', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/GroutMortar.png') },
-                { dept: 'Cleaners & Sealers', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/CleanerSealer.png') },
-                { dept: 'Tools', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/Tools/tx4.jpg') },
-                { dept: 'Accessories', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/ezNiche.jpg') },
+                { dept: 'Tiles', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg') },
+                { dept: 'Stone Tiles', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Stone/S1120-Ledge-Panel.jpg') },
+                { dept: 'Bath Vanities', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Vanities/MJ.jpg') },
+                { dept: 'Vanity Tops', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/VanityTop.jpg') },
+                { dept: 'Faucets', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Faucets/Concetto.jpg') },
+                { dept: 'Schluter Systems', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/SchluterSystem.jpeg') },
+                { dept: 'Countertops', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Countertop.jpg') },
+                { dept: 'Kitchen Sinks', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Sinks/m2522-8.png') },
+                { dept: 'Kitchen Cabinets', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/WhiteKitCab.jpg') },
+                { dept: 'Toilets', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Toilets/UltraMaxII.png') },
+                { dept: 'Grout & Mortars', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/GroutMortar.png') },
+                { dept: 'Cleaners & Sealers', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/CleanerSealer.png') },
+                { dept: 'Tools', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Tools/tx4.jpg') },
+                { dept: 'Accessories', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/ezNiche.jpg') },
             ];
 
         return (

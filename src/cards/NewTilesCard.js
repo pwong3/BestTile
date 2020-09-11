@@ -13,7 +13,7 @@ class NewTilesCard extends Component {
                 <ImageBackground
                     style={{ width: '100%', height: 220 }}
                     resizeMode={'cover'}
-                    source={require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/newTiles.jpg')}
+                    source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/newTiles.jpg')}
                 >
                     <Text style={cardTextStyle}>NEW!</Text>
                 </ImageBackground>
@@ -24,7 +24,7 @@ class NewTilesCard extends Component {
 
 const styles = {
     cardTextStyle: {
-        fontFamily: 'sans-serif-condensed',
+        
         fontSize: 25,
         color: 'white',
         textAlign: 'right',

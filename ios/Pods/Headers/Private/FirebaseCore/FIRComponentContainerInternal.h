@@ -1,1 +1,1 @@
-../../../FirebaseCore/FirebaseCore/Sources/FIRComponentContainerInternal.h
+../../../FirebaseCore/Firebase/Core/Private/FIRComponentContainerInternal.h

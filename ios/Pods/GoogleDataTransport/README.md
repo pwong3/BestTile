@@ -3,7 +3,6 @@
 [![Platform](https://img.shields.io/cocoapods/p/Firebase.svg?style=flat)](https://cocoapods.org/pods/Firebase)
 
 [![Actions Status][gh-abtesting-badge]][gh-actions]
-[![Actions Status][gh-appdistribution-badge]][gh-actions]
 [![Actions Status][gh-auth-badge]][gh-actions]
 [![Actions Status][gh-core-badge]][gh-actions]
 [![Actions Status][gh-crashlytics-badge]][gh-actions]
@@ -99,7 +98,7 @@ Instructions for installing binary frameworks via
 To develop Firebase software in this repository, ensure that you have at least
 the following software:
 
-  * Xcode 10.3 (or later)
+  * Xcode 10.1 (or later)
   * CocoaPods 1.7.2 (or later)
   * [CocoaPods generate](https://github.com/square/cocoapods-generate)
 
@@ -130,23 +129,27 @@ Firestore has a self contained Xcode project. See
 
 See [AddNewPod.md](AddNewPod.md).
 
-### Managing Headers and Imports
-
-See [HeadersImports.md](HeadersImports.md).
-
 ### Code Formatting
 
 To ensure that the code is formatted consistently, run the script
-[./scripts/check.sh](https://github.com/firebase/firebase-ios-sdk/blob/master/scripts/check.sh)
+[./scripts/style.sh](https://github.com/firebase/firebase-ios-sdk/blob/master/scripts/style.sh)
 before creating a PR.
 
-GitHub Actions will verify that any code changes are done in a style compliant
-way. Install `clang-format` and `mint`:
+Travis will verify that any code changes are done in a style compliant way. Install
+`clang-format` and `swiftformat`.
+These commands will get the right versions:
 
 ```
-brew install clang-format
-brew install mint
+brew upgrade https://raw.githubusercontent.com/Homebrew/homebrew-core/c6f1cbd/Formula/clang-format.rb
+brew upgrade https://raw.githubusercontent.com/Homebrew/homebrew-core/c13eda8/Formula/swiftformat.rb
 ```
+
+Note: if you already have a newer version of these installed you may need to
+`brew switch` to this version.
+
+To update this section, find the versions of clang-format and swiftformat.rb to
+match the versions in the CI failure logs
+[here](https://github.com/Homebrew/homebrew-core/tree/master/Formula).
 
 ### Running Unit Tests
 
@@ -170,7 +173,12 @@ files without real values, but can be replaced with real plist files. To get you
 2. Create a new Firebase project, if you don't already have one
 3. For each sample app you want to test, create a new Firebase app with the sample app's bundle
 identifier (e.g. `com.google.Database-Example`)
-4. Download the resulting `GoogleService-Info.plist` and add it to the Xcode project.
+4. Download the resulting `GoogleService-Info.plist` and replace the appropriate dummy plist file
+(e.g. in [Example/Database/App/](Example/Database/App/));
+
+Some sample apps like Firebase Messaging ([Example/Messaging/App](Example/Messaging/App)) require
+special Apple capabilities, and you will have to change the sample app to use a unique bundle
+identifier that you can control in your own Apple Developer account.
 
 ## Specific Component Instructions
 See the sections below for any special instructions for those components.
@@ -190,7 +198,7 @@ To run against a local emulator instance, invoke `./scripts/run_database_emulato
 running the integration test.
 
 To run against a production instance, provide a valid GoogleServices-Info.plist and copy it to
-`FirebaseDatabase/Tests/Resources/GoogleService-Info.plist`. Your Security Rule must be set to
+`Example/Database/App/GoogleService-Info.plist`. Your Security Rule must be set to
 [public](https://firebase.google.com/docs/database/security/quickstart) while your tests are
 running.
 
@@ -244,7 +252,7 @@ To install, add a subset of the following to the Podfile:
 
 ```
 pod 'Firebase/ABTesting'     # No watchOS support yet
-pod 'Firebase/Auth'          # Limited watchOS support
+pod 'Firebase/Auth'          # No watchOS support yet
 pod 'Firebase/Crashlytics'   # No watchOS support yet
 pod 'Firebase/Database'      # No watchOS support yet
 pod 'Firebase/Firestore'     # No watchOS support yet
@@ -281,7 +289,6 @@ Your use of Firebase is governed by the
 
 [gh-actions]: https://github.com/firebase/firebase-ios-sdk/actions
 [gh-abtesting-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/abtesting/badge.svg
-[gh-appdistribution-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/appdistribution/badge.svg
 [gh-auth-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/auth/badge.svg
 [gh-core-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/core/badge.svg
 [gh-crashlytics-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/crashlytics/badge.svg

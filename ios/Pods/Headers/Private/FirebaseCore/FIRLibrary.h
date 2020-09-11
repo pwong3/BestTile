@@ -1,1 +1,1 @@
-../../../FirebaseCore/FirebaseCore/Sources/Private/FIRLibrary.h
+../../../FirebaseCore/Firebase/Core/Private/FIRLibrary.h

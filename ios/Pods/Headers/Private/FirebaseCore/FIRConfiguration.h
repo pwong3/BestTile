@@ -1,1 +1,1 @@
-../../../FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h
+../../../FirebaseCore/Firebase/Core/Public/FIRConfiguration.h

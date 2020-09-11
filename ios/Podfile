@@ -4,10 +4,18 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '9.0'
 
 target 'BestTile' do
+
+  rn_maps_path = '../node_modules/react-native-maps'
+  pod 'react-native-google-maps', :path => rn_maps_path
+  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
+
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
-
+  pod 'Firebase/Core', '~> 6.13.0'
+  pod 'Firebase/Database', '~> 6.13.0'
+  pod 'Firebase/Auth', '~> 6.13.0'
   target 'BestTileTests' do
     inherit! :complete
     # Pods for testing

@@ -1,1 +1,1 @@
-../../../FirebaseCore/FirebaseCore/Sources/FIRBundleUtil.h
+../../../FirebaseCore/Firebase/Core/Private/FIRBundleUtil.h

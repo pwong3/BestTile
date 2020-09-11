@@ -1,1 +1,1 @@
-../../../FirebaseCore/FirebaseCore/Sources/FIRAppAssociationRegistration.h
+../../../FirebaseCore/Firebase/Core/Private/FIRAppAssociationRegistration.h

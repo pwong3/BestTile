@@ -10,7 +10,7 @@ class HomePromoCard extends Component {
         <ImageBackground
           style={{ width: '100%', height: 250 }}
           resizeMode={'cover'}
-          source={require('/Users/patri/Documents/React Native Projects/BestTile2/src/resources/ezWedge.jpg')}>
+          source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/ezWedge.jpg')}>
           <Text style={cardTextStyle}>
             EZ Wedge{'\n'}
             Stay leveled!
@@ -23,7 +23,7 @@ class HomePromoCard extends Component {
 
 const styles = {
   cardTextStyle: {
-    fontFamily: 'sans-serif-condensed',
+  
     fontSize: 25,
     color: 'black',
     textAlign: 'right',
