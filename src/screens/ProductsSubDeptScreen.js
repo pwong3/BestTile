@@ -22,8 +22,8 @@ class ProductsSubDeptScreen extends Component {
         const cardWidth = this.state.width / 2.0;
         const tileSubDepts =
             [
-                { subDept: 'Ceramic', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg') },
-                { subDept: 'Porcelain', deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg') },
+                { subDept: 'Ceramic', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg') },
+                { subDept: 'Porcelain', deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg') },
             ]
         return (
             <ScrollView backgroundColor='rgb(230,230,230)'>

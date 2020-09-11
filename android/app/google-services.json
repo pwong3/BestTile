@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "1078132894694",
+    "firebase_url": "https://besttile-a546b.firebaseio.com",
+    "project_id": "besttile-a546b",
+    "storage_bucket": "besttile-a546b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078132894694:android:7ba71b53365a1ca2d7c427",
+        "android_client_info": {
+          "package_name": "com.besttile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078132894694-63ngps664cna2n2p3fc9rionqceb854m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1vDwPQkFcyQTsho7TrRWuPW_xNErBv2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078132894694-63ngps664cna2n2p3fc9rionqceb854m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1078132894694-7r83o6ouker564lqqfpvjpp8t5i37ecs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.BestTile"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078132894694:android:b59635eefc9549b0",
+        "android_client_info": {
+          "package_name": "com.besttile2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078132894694-63ngps664cna2n2p3fc9rionqceb854m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1vDwPQkFcyQTsho7TrRWuPW_xNErBv2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078132894694-63ngps664cna2n2p3fc9rionqceb854m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1078132894694-7r83o6ouker564lqqfpvjpp8t5i37ecs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.BestTile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

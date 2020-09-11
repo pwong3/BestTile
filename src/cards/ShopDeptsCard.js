@@ -13,7 +13,7 @@ class ShopDeptsCard extends Component {
                 <ImageBackground
                     style={{ width: '100%', height: 250 }}
                     resizeMode={'cover'}
-                    source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/showroom1.jpg')}
+                    source={require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/showroom1.jpg')}
                 >
                     <Text style={cardTextStyle}>
                         Shop Departments{"\n"}
