@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
 import { Text, ImageBackground } from 'react-native';
 import { Card } from '../components/common';
@@ -23,7 +24,6 @@ class HomePromoCard extends Component {
 
 const styles = {
   cardTextStyle: {
-  
     fontSize: 25,
     color: 'black',
     textAlign: 'right',

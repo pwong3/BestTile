@@ -12,7 +12,7 @@ import {
   AccountScreen,
   AuthAccountScreen,
   ProductsDeptScreen,
-  ProductsSubDeptScreen,
+  TilesSubDeptScreen,
   ProductsListScreen,
   PrivacyPolicyScreen,
   ProductItemScreen,
@@ -65,8 +65,8 @@ const ProductsStackNavigator = createStackNavigator({
             */
     }),
   },
-  ProductsSubDept: {
-    screen: ProductsSubDeptScreen,
+  TilesSubDept: {
+    screen: TilesSubDeptScreen,
   },
   ProductsList: {
     screen: ProductsListScreen,

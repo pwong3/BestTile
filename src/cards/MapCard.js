@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
 import {
   View,
@@ -57,13 +58,16 @@ class MapCard extends Component {
               title={'Best Tile & Building Supply'}
             />
           </MapView>
-
           <ScrollView
             snapToInterval={260}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
             centerContent={true}>
-            <View style={{ width: 260, marginVertical: 5 }}>
+            <View
+              style={{
+                width: 260,
+                marginVertical: 5,
+              }}>
               <Card>
                 <Text style={addrTextStyle}>
                   <Text style={addrHeaderStyle}>Best Tile Inc{'\n'}</Text>

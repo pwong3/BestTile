@@ -13,4 +13,4 @@ export * from './PrivacyPolicyScreen';
 export * from './ProductItemScreen';
 export * from './SearchScreen';
 export * from './NewProdsListScreen';
-export * from './ProductsSubDeptScreen';
+export * from './TilesSubDeptScreen';
