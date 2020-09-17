@@ -6,10 +6,13 @@ import {
   ActivityIndicator,
   Button,
   Animated,
+  Text,
 } from 'react-native';
 import { Card } from '../components/common/Card';
 import fire from '../config/fire';
 import ProductListItem from '../components/ProductListItem';
+import Modal from 'react-native-modal';
+import CheckBox from '@react-native-community/checkbox';
 
 class ProductsListScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -34,9 +37,15 @@ class ProductsListScreen extends Component {
     this.state = {
       productsList: [],
       isLoading: true,
+      isModalVisible: false,
     };
   }
 
+  toggleModal = () => {
+    this.setState({
+      isModalVisible: !this.state.isModalVisible,
+    });
+  };
   loadFirebaseData(deptPassed) {
     const rootRef = fire.database().ref();
     const deptRef = rootRef.child('Department');
@@ -114,6 +123,8 @@ class ProductsListScreen extends Component {
     const productsDB = this.state.productsList.sort((a, b) =>
       a['sortKey'] > b['sortKey'] ? 1 : -1,
     );
+    const { isModalVisible } = this.state;
+
     return (
       <View style={{ flex: 1 }} backgroundColor="rgb(230,230,230)">
         {this.state.isLoading ? (
@@ -124,8 +135,26 @@ class ProductsListScreen extends Component {
         ) : (
           <View>
             <Animated.View>
-              <Button title="Filter" />
+              <Button onPress={this.toggleModal} title="Filter" />
             </Animated.View>
+            <Modal
+              isVisible={isModalVisible}
+              animationIn={'slideInUp'}
+              animationInTiming={400}
+              animationOut={'slideOutDown'}
+              animationOutTiming={400}
+              onBackButtonPress={() => this.setState({ isModalVisible: false })}
+              onBackdropPress={() => this.setState({ isModalVisible: false })}>
+              <View
+                style={{
+                  backgroundColor: 'white',
+                  flex: 1,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Text>HI</Text>
+              </View>
+            </Modal>
             <VirtualizedList
               data={productsDB}
               keyExtractor={(item) => item.key}
