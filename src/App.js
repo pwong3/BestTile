@@ -281,7 +281,7 @@ const DrawerContent = (props) => (
     <Image
       style={{ width: '30%', marginLeft: 20 }}
       resizeMode={'contain'}
-      source={require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/BTIcon.jpg')}
+      source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/BTIcon.jpg')}
     />
     <DrawerItems {...props} />
   </View>

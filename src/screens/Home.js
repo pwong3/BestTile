@@ -31,7 +31,7 @@ class Home extends Component {
         <StatusBar backgroundColor="rgb(190,0,0)" />
         {/*ImageBackground is the Header picture*/}
         <ImageBackground
-          source={require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/bt_shop.jpg')}
+          source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/bt_shop.jpg')}
           style={{ height: 180 }}>
           <View>
             <View
@@ -43,7 +43,7 @@ class Home extends Component {
               <Image
                 style={{ width: '40%', borderRadius: 2 }}
                 resizeMode={'contain'}
-                source={require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/BestTileLogo.jpg')}
+                source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/BestTileLogo.jpg')}
               />
             </View>
           </View>

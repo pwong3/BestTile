@@ -25,22 +25,22 @@ class TilesSubDeptScreen extends Component {
     const tileSubDepts = [
       {
         subDept: 'Ceramic',
-        deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
+        deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
         orderBy: 'productMaterial',
       },
       {
         subDept: 'Porcelain',
-        deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
+        deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
         orderBy: 'productMaterial',
       },
       {
         subDept: '12" x 24"',
-        deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
+        deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
         orderBy: 'productSize',
       },
       {
         subDept: 'White',
-        deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
+        deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
         orderBy: 'productColor',
       },
     ];
