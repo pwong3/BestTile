@@ -1,13 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
-  ScrollView,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-  Button,
   FlatList,
   ActivityIndicator,
   Alert,
@@ -15,7 +10,7 @@ import {
 } from 'react-native';
 import ProductListItem from '../components/ProductListItem';
 import AsyncStorage from '@react-native-community/async-storage';
-import { Card, TileCard } from '../components/common';
+import { Card } from '../components/common';
 
 class FavoritesScreen extends Component {
   static navigationOptions = {
@@ -48,7 +43,7 @@ class FavoritesScreen extends Component {
     try {
       allKeys = await AsyncStorage.getAllKeys();
       const allItems = await AsyncStorage.multiGet(allKeys);
-      console.log(allItems);
+      console.log('all items' + allItems);
       const favorites = [];
       if (favorites.length === 0) {
         this.setState({ hasFaves: false });
@@ -86,18 +81,13 @@ class FavoritesScreen extends Component {
   }
 
   // componentDidUpdate(prevState) {
-  //     if (prevState.favProdList.length !== this.state.favProdList.length)
-  //         this.getFavorites();
+  //   if (prevState.favProdList.length !== this.state.favProdList.length) {
+  //     this.getFavorites();
+  //   }
   // }
 
   render() {
-    const {
-      cardTextStyle,
-      itemCardStyle,
-      itemImageStyle,
-      detailsButtonStyle,
-      textStyle,
-    } = styles;
+    const { detailsButtonStyle, textStyle } = styles;
     const favProdList = this.state.favProdList;
     return (
       <View style={{ flex: 1 }} backgroundColor="rgb(230,230,230)">

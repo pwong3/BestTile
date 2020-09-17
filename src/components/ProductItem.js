@@ -4,6 +4,7 @@ import {
   View,
   Text,
   ScrollView,
+  FlatList,
   Image,
   Dimensions,
   Alert,
@@ -35,7 +36,7 @@ class ProductItem extends PureComponent {
   };
   setFavorite = async (item) => {
     try {
-      const itemValue = JSON.stringify(item);
+      let itemValue = JSON.stringify(item);
       await AsyncStorage.setItem(item.key, itemValue);
       ToastAndroid.show(
         item.productName + ' added to favorites.',
@@ -136,9 +137,10 @@ class ProductItem extends PureComponent {
               style={{
                 alignContent: 'center',
               }}
-              snapToInterval={150}
+              snapToInterval={340}
               showsHorizontalScrollIndicator={false}
               pagingEnabled
+              decelerationRate={0}
               horizontal={true}>
               {itemPassed.imageUrl.map((image) => (
                 <Image
@@ -213,7 +215,7 @@ class ProductItem extends PureComponent {
                       {paragraph[1]}
                     </Text>
                   );
-                } else
+                } else {
                   return (
                     <View
                       key={desc}
@@ -226,6 +228,7 @@ class ProductItem extends PureComponent {
                       <Text style={productDetailsText}>{desc}</Text>
                     </View>
                   );
+                }
               })}
             </CardSection>
           </View>

@@ -1,6 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
-import { VirtualizedList, View, ActivityIndicator } from 'react-native';
+import {
+  VirtualizedList,
+  View,
+  ActivityIndicator,
+  Button,
+  Animated,
+} from 'react-native';
 import { Card } from '../components/common/Card';
 import fire from '../config/fire';
 import ProductListItem from '../components/ProductListItem';
@@ -105,7 +111,9 @@ class ProductsListScreen extends Component {
   }
 
   render() {
-    const productsDB = this.state.productsList;
+    const productsDB = this.state.productsList.sort((a, b) =>
+      a['sortKey'] > b['sortKey'] ? 1 : -1,
+    );
     return (
       <View style={{ flex: 1 }} backgroundColor="rgb(230,230,230)">
         {this.state.isLoading ? (
@@ -115,10 +123,15 @@ class ProductsListScreen extends Component {
           </View>
         ) : (
           <View>
+            <Animated.View>
+              <Button title="Filter" />
+            </Animated.View>
             <VirtualizedList
               data={productsDB}
+              keyExtractor={(item) => item.key}
               getItem={(data, index) => data[index]}
               getItemCount={(data) => data.length}
+              maxToRenderPerBatch={10}
               renderItem={({ item }) => (
                 <Card>
                   <ProductListItem

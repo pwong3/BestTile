@@ -14,9 +14,7 @@ import { Card, CardSection } from '../components/common';
 class PrivacyPolicyScreen extends Component {
   static navigationOptions = {
     title: 'Privacy Policy',
-    headerStyle: {
-      backgroundColor: 'red',
-    },
+    headerStyle: { backgroundColor: 'red' },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'normal',
@@ -32,9 +30,6 @@ class PrivacyPolicyScreen extends Component {
         backgroundColor="rgb(230,230,230)" //background color under the cards
       >
         <Card>
-          <CardSection>
-            <Text style={{ fontWeight: 'bold' }}>Privacy Policy</Text>
-          </CardSection>
           <Text style={{ margin: 5 }}>
             Best Tile Inc built the Best Tile app as a Free app. This SERVICE is
             provided by Best Tile Inc at no cost and is intended for use as is.

@@ -113,7 +113,40 @@ const FavoritesStackNavigator = createStackNavigator({
     screen: ProductItemScreen,
   },
 });
-
+const AboutUsStackNavigator = createStackNavigator({
+  Favorites: {
+    screen: AboutUsScreen,
+    //back button in header
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: (
+        <HeaderBackButton
+          tintColor="white"
+          onPress={() => navigation.goBack(null)}
+        />
+      ),
+    }),
+  },
+  ProductItem: {
+    screen: ProductItemScreen,
+  },
+});
+const PrivacyPolicyStackNavigator = createStackNavigator({
+  Favorites: {
+    screen: PrivacyPolicyScreen,
+    //back button in header
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: (
+        <HeaderBackButton
+          tintColor="white"
+          onPress={() => navigation.goBack(null)}
+        />
+      ),
+    }),
+  },
+  ProductItem: {
+    screen: ProductItemScreen,
+  },
+});
 const NewProdsStackNavigator = createStackNavigator(
   {
     NewProds: {
@@ -211,7 +244,7 @@ const TabsNavigator = createBottomTabNavigator(
     resetOnBlur: true, //resets stack for each tab
     animationEnabled: true,
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) => {
+      tabBarIcon: ({ tintColor, focused }) => {
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === 'Home') {
@@ -269,7 +302,7 @@ const DrawerNavigator = createDrawerNavigator(
       screen: FavoritesStackNavigator,
     },
     AboutUs: {
-      screen: AboutUsScreen,
+      screen: AboutUsStackNavigator,
     },
     /*
     Account: {
@@ -277,14 +310,15 @@ const DrawerNavigator = createDrawerNavigator(
     },
     */
     PrivacyPolicy: {
-      screen: PrivacyPolicyScreen,
+      screen: PrivacyPolicyStackNavigator,
     },
   },
   {
     contentComponent: DrawerContent,
+    overlayColor: 'rgba(0,0,0,0.7)',
     resetOnBlur: true,
     defaultNavigationOptions: ({ navigation }) => ({
-      drawerIcon: ({ focused, tintColor }) => {
+      drawerIcon: ({ tintColor, focused }) => {
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === 'Home') {
