@@ -11,6 +11,7 @@ import {
 import ProductListItem from '../components/ProductListItem';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Card } from '../components/common';
+import { NavigationEvents } from 'react-navigation';
 
 class FavoritesScreen extends Component {
   static navigationOptions = {
@@ -45,9 +46,6 @@ class FavoritesScreen extends Component {
       const allItems = await AsyncStorage.multiGet(allKeys);
       console.log('all items' + allItems);
       const favorites = [];
-      if (favorites.length === 0) {
-        this.setState({ hasFaves: false });
-      }
       allItems.forEach((item) => {
         const product = JSON.parse(item[1]);
         favorites.push({
@@ -71,28 +69,24 @@ class FavoritesScreen extends Component {
         hasFaves: true,
         isLoading: false,
       });
+      if (favorites.length === 0) {
+        this.setState({ hasFaves: false });
+        console.log(this.state.hasFaves);
+      }
       console.log('state 2: ' + this.state.favProdList);
+      console.log(this.state.hasFaves);
     } catch (e) {}
   };
-  componentDidMount() {
-    this.getFavorites();
-    console.log('loaded');
-    console.log('state: ' + this.state.favProdList);
-  }
-
-  // componentDidUpdate(prevState) {
-  //   if (prevState.favProdList.length !== this.state.favProdList.length) {
-  //     this.getFavorites();
-  //   }
-  // }
 
   render() {
     const { detailsButtonStyle, textStyle } = styles;
     const favProdList = this.state.favProdList;
     return (
       <View style={{ flex: 1 }} backgroundColor="rgb(230,230,230)">
+        <NavigationEvents onDidFocus={() => this.getFavorites()} />
         {this.state.hasFaves ? (
           <View>
+            {console.log(this.state.hasFaves)}
             {this.state.isLoading ? (
               <View
                 style={{

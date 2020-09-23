@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Text, ScrollView, View, TouchableOpacity } from 'react-native';
 import { Card, CardSection } from '../components/common';
 import { DeptCard } from '../components';
+import fire from '../config/fire';
 
 class TilesSubDeptScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -16,31 +17,37 @@ class TilesSubDeptScreen extends Component {
       },
     };
   };
+
   state = {
     width: '', //used to divide the dept cards in 2 equal size cards when side by side
   };
+
   render() {
     const { headerStyle } = styles;
     const cardWidth = this.state.width / 2.0;
     const tileSubDepts = [
       {
         subDept: 'Ceramic',
-        deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
+        subDeptHeader: 'Ceramic',
+        deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
         orderBy: 'productMaterial',
       },
       {
         subDept: 'Porcelain',
-        deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
+        subDeptHeader: 'Porcelain',
+        deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
         orderBy: 'productMaterial',
       },
       {
-        subDept: '12" x 24"',
-        deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
-        orderBy: 'productSize',
+        subDept: '12',
+        subDeptHeader: 'Large Format',
+        deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
+        orderBy: 'tileLength',
       },
       {
         subDept: 'White',
-        deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
+        subDeptHeader: 'White',
+        deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
         orderBy: 'productColor',
       },
     ];
@@ -71,6 +78,7 @@ class TilesSubDeptScreen extends Component {
                         deptPassed: this.props.navigation.getParam(
                           'deptPassed',
                         ),
+                        subDeptHeaderPassed: item.subDeptHeader,
                         subDeptPassed: item.subDept,
                         orderByPassed: item.orderBy,
                       })
@@ -78,7 +86,7 @@ class TilesSubDeptScreen extends Component {
                     <View style={{ width: cardWidth }}>
                       <DeptCard
                         deptImage={item.deptImage}
-                        deptText={item.subDept}
+                        deptText={item.subDeptHeader}
                         deptWidth={cardWidth}
                       />
                     </View>

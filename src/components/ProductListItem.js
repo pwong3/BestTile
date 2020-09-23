@@ -19,65 +19,75 @@ class ProductListItem extends PureComponent {
       imageStyle,
     } = styles; //object destructuring
     const { item, itemScreen } = this.props;
+    const width125 = Dimensions.get('window').width - 125;
+    const width135 = Dimensions.get('window').width - 135;
     return (
-      <TouchableOpacity
-        onPress={() =>
-          this.props.navigation.navigate(itemScreen, { itemPassed: item })
-        }>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'flex-start',
-            paddingTop: 10,
-            paddingBottom: 8,
-          }}>
-          <View>
-            <Image source={{ uri: item.imageUrl[0].url }} style={imageStyle} />
-          </View>
+      <Card>
+        <TouchableOpacity
+          onPress={() =>
+            this.props.navigation.navigate(itemScreen, { itemPassed: item })
+          }>
           <View
             style={{
-              flexDirection: 'column',
-              paddingTop: 4,
+              flexDirection: 'row',
+              justifyContent: 'flex-start',
+              paddingTop: 10,
+              paddingBottom: 8,
             }}>
-            {item.productBrand === '' || item.productDepartment === 'Tiles' ? (
-              <View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    width: Dimensions.get('window').width - 125,
-                  }}>
-                  <Text style={productBrandText}>{item.productName}</Text>
+            <View>
+              <Image
+                source={{ uri: item.imageUrl[0].url }}
+                style={imageStyle}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: 'column',
+                paddingTop: 4,
+              }}>
+              {item.productBrand === '' ||
+              item.productDepartment === 'Tiles' ? (
+                <View>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      width: width125,
+                    }}>
+                    <Text style={productBrandText}>{item.productName}</Text>
+                  </View>
                 </View>
-              </View>
-            ) : (
-              <View>
-                <Text style={productBrandText}>{item.productBrand}</Text>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    width: Dimensions.get('window').width - 135,
-                  }}>
-                  <Text style={productNameText}>{item.productName}</Text>
+              ) : (
+                <View>
+                  <Text style={productBrandText}>{item.productBrand}</Text>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      width: width135,
+                    }}>
+                    <Text style={productNameText}>{item.productName}</Text>
+                  </View>
                 </View>
-              </View>
-            )}
-            {item.productModelNumber === '' ? null : (
-              <Text style={productDescText}>
-                Model# {item.productModelNumber}
-              </Text>
-            )}
-            {item.productSize === '' ? null : (
-              <Text style={productDescText}>{item.productSize}</Text>
-            )}
-            {item.productMaterial === '' ? null : (
-              <Text style={productDescText}>{item.productMaterial}</Text>
-            )}
-            {item.productMadeIn === '' ? null : (
-              <Text style={productDescText}>Made in {item.productMadeIn}</Text>
-            )}
+              )}
+              {item.productModelNumber === '' ? null : (
+                <Text style={productDescText}>
+                  Model# {item.productModelNumber}
+                </Text>
+              )}
+              {item.productSize === '' ? null : (
+                <Text style={productDescText}>{item.productSize}</Text>
+              )}
+              {item.productMaterial === '' ? null : (
+                <Text style={productDescText}>{item.productMaterial}</Text>
+              )}
+              {item.productMadeIn === '' ? null : (
+                <Text style={productDescText}>
+                  Made in {item.productMadeIn}
+                </Text>
+              )}
+            </View>
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </Card>
     );
   }
 }

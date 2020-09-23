@@ -13,12 +13,17 @@ import fire from '../config/fire';
 import ProductListItem from '../components/ProductListItem';
 import Modal from 'react-native-modal';
 import CheckBox from '@react-native-community/checkbox';
+import {
+  RecyclerListView,
+  DataProvider,
+  LayoutProvider,
+} from 'recyclerlistview';
 
 class ProductsListScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     let title = '';
     if (navigation.getParam('deptPassed') === 'Tiles') {
-      title = navigation.getParam('subDeptPassed');
+      title = navigation.getParam('subDeptHeaderPassed');
     } else {
       title = navigation.getParam('deptPassed');
     }
@@ -66,6 +71,8 @@ class ProductsListScreen extends Component {
           productName: product.val().productName,
           productPrice: product.val().productPrice,
           productSize: product.val().productSize,
+          tileWidth: product.val().tileWidth,
+          tileLength: product.val().tileLength,
           sortKey: product.val().sortKey,
         });
       });
@@ -99,6 +106,8 @@ class ProductsListScreen extends Component {
           productName: product.val().productName,
           productPrice: product.val().productPrice,
           productSize: product.val().productSize,
+          tileWidth: product.val().tileWidth,
+          tileLength: product.val().tileLength,
           sortKey: product.val().sortKey,
         });
       });
@@ -138,37 +147,41 @@ class ProductsListScreen extends Component {
               <Button onPress={this.toggleModal} title="Filter" />
             </Animated.View>
             <Modal
+              style={{ justifyContent: 'flex-end', margin: 0 }}
               isVisible={isModalVisible}
               animationIn={'slideInUp'}
               animationInTiming={400}
               animationOut={'slideOutDown'}
               animationOutTiming={400}
+              onSwipeComplete={() => this.setState({ isModalVisible: false })}
+              swipeDirection="down"
               onBackButtonPress={() => this.setState({ isModalVisible: false })}
               onBackdropPress={() => this.setState({ isModalVisible: false })}>
               <View
                 style={{
+                  padding: 100,
                   backgroundColor: 'white',
-                  flex: 1,
                   alignItems: 'center',
                   justifyContent: 'center',
+                  borderTopLeftRadius: 20,
+                  borderTopRightRadius: 20,
                 }}>
                 <Text>HI</Text>
               </View>
             </Modal>
             <VirtualizedList
+              style={{ marginBottom: 35 }}
               data={productsDB}
               keyExtractor={(item) => item.key}
               getItem={(data, index) => data[index]}
               getItemCount={(data) => data.length}
               maxToRenderPerBatch={10}
               renderItem={({ item }) => (
-                <Card>
-                  <ProductListItem
-                    itemScreen={'ProductItem'}
-                    navigation={this.props.navigation} //passes navigation props to FlatListItem
-                    item={item}
-                  />
-                </Card>
+                <ProductListItem
+                  itemScreen={'ProductItem'}
+                  navigation={this.props.navigation} //passes navigation props to FlatListItem
+                  item={item}
+                />
               )}
             />
           </View>

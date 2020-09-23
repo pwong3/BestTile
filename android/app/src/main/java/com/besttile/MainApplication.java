@@ -13,6 +13,7 @@ import java.util.List;
 import io.invertase.firebase.database.RNFirebaseDatabasePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage; 
 import io.invertase.firebase.storage.RNFirebaseStoragePackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
