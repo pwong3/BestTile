@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   Alert,
   TouchableNativeFeedback,
+  TouchableOpacity,
 } from 'react-native';
 import ProductListItem from '../components/ProductListItem';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -26,28 +27,33 @@ class FavoritesScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favProdList: [],
+      favoritesList: [],
       isLoading: true,
       hasFaves: false,
     };
   }
-  removeFavorite = async (key) => {
+  removeFavorite = async (item) => {
+    const { favoritesList } = this.state;
     try {
-      await AsyncStorage.removeItem(key);
-      this.getFavorites();
+      for (let i = 0; i < favoritesList.length; i++) {
+        if (favoritesList[i].key === item.key) {
+          favoritesList.splice(i, 1);
+        }
+      }
+      let itemValue = JSON.stringify(favoritesList);
+      await AsyncStorage.setItem('@favorites', itemValue);
+      this.getFavoritesList();
     } catch (e) {
       // remove error
     }
   };
-  getFavorites = async () => {
-    let allKeys = [];
+  getFavoritesList = async () => {
     try {
-      allKeys = await AsyncStorage.getAllKeys();
-      const allItems = await AsyncStorage.multiGet(allKeys);
-      console.log('all items' + allItems);
+      const itemValue = await AsyncStorage.getItem('@favorites');
       const favorites = [];
-      allItems.forEach((item) => {
-        const product = JSON.parse(item[1]);
+      const itemParsed = JSON.parse(itemValue);
+      console.log('favscreen ' + itemParsed);
+      itemParsed.forEach((product) => {
         favorites.push({
           key: product.key,
           imageUrl: product.imageUrl,
@@ -65,25 +71,21 @@ class FavoritesScreen extends Component {
         });
       });
       this.setState({
-        favProdList: favorites,
+        favoritesList: favorites,
         hasFaves: true,
         isLoading: false,
       });
-      if (favorites.length === 0) {
-        this.setState({ hasFaves: false });
-        console.log(this.state.hasFaves);
-      }
-      console.log('state 2: ' + this.state.favProdList);
-      console.log(this.state.hasFaves);
-    } catch (e) {}
+    } catch (e) {
+      // error reading value
+    }
   };
 
   render() {
-    const { detailsButtonStyle, textStyle } = styles;
-    const favProdList = this.state.favProdList;
+    const { removeButtonStyle, textStyle } = styles;
+    const { favoritesList } = this.state;
     return (
       <View style={{ flex: 1 }} backgroundColor="rgb(230,230,230)">
-        <NavigationEvents onDidFocus={() => this.getFavorites()} />
+        <NavigationEvents onDidFocus={() => this.getFavoritesList()} />
         {this.state.hasFaves ? (
           <View>
             {console.log(this.state.hasFaves)}
@@ -99,7 +101,7 @@ class FavoritesScreen extends Component {
             ) : (
               <View backgroundColor="rgb(230,230,230)">
                 <FlatList
-                  data={favProdList}
+                  data={favoritesList}
                   renderItem={({ item }) => (
                     <Card>
                       <ProductListItem
@@ -108,7 +110,7 @@ class FavoritesScreen extends Component {
                         item={item}
                       />
                       <TouchableNativeFeedback
-                        style={detailsButtonStyle}
+                        style={removeButtonStyle}
                         title="Remove"
                         onPress={() =>
                           Alert.alert(
@@ -120,12 +122,12 @@ class FavoritesScreen extends Component {
                               },
                               {
                                 text: 'Yes',
-                                onPress: () => this.removeFavorite(item.key),
+                                onPress: () => this.removeFavorite(item),
                               },
                             ],
                           )
                         }>
-                        <View style={detailsButtonStyle}>
+                        <View style={removeButtonStyle}>
                           <Text style={textStyle}>Remove</Text>
                         </View>
                       </TouchableNativeFeedback>
@@ -138,7 +140,15 @@ class FavoritesScreen extends Component {
           </View>
         ) : (
           <View>
-            <Text>Start shopping!</Text>
+            <Card>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Products')}>
+                <Text
+                  style={{ fontSize: 25, textAlign: 'center', color: 'black' }}>
+                  Browse all departments
+                </Text>
+              </TouchableOpacity>
+            </Card>
           </View>
         )}
       </View>
@@ -166,7 +176,8 @@ const styles = {
     paddingTop: 10,
     paddingBottom: 10,
   },
-  detailsButtonStyle: {
+  removeButtonStyle: {
+    backgroundColor: 'white',
     borderTopWidth: 0.6,
     borderColor: '#ddd',
     borderTopLeftRadius: 0,

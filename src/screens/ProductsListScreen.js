@@ -177,11 +177,13 @@ class ProductsListScreen extends Component {
               getItemCount={(data) => data.length}
               maxToRenderPerBatch={10}
               renderItem={({ item }) => (
-                <ProductListItem
-                  itemScreen={'ProductItem'}
-                  navigation={this.props.navigation} //passes navigation props to FlatListItem
-                  item={item}
-                />
+                <Card>
+                  <ProductListItem
+                    itemScreen={'ProductItem'}
+                    navigation={this.props.navigation} //passes navigation props to FlatListItem
+                    item={item}
+                  />
+                </Card>
               )}
             />
           </View>

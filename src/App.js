@@ -114,7 +114,7 @@ const FavoritesStackNavigator = createStackNavigator({
   },
 });
 const AboutUsStackNavigator = createStackNavigator({
-  Favorites: {
+  AboutUs: {
     screen: AboutUsScreen,
     //back button in header
     navigationOptions: ({ navigation }) => ({
@@ -126,12 +126,9 @@ const AboutUsStackNavigator = createStackNavigator({
       ),
     }),
   },
-  ProductItem: {
-    screen: ProductItemScreen,
-  },
 });
 const PrivacyPolicyStackNavigator = createStackNavigator({
-  Favorites: {
+  PrivacyPolicy: {
     screen: PrivacyPolicyScreen,
     //back button in header
     navigationOptions: ({ navigation }) => ({
@@ -142,9 +139,6 @@ const PrivacyPolicyStackNavigator = createStackNavigator({
         />
       ),
     }),
-  },
-  ProductItem: {
-    screen: ProductItemScreen,
   },
 });
 const NewProdsStackNavigator = createStackNavigator(
@@ -213,7 +207,6 @@ const HomeStackNavigator = createStackNavigator({
         <MatIcon
           style={{ margin: 15 }}
           name={'search'}
-          color={'white'}
           size={25}
           onPress={() => navigation.navigate('SearchScreen')}
         />
@@ -281,7 +274,7 @@ const DrawerContent = (props) => (
     <Image
       style={{ width: '30%', marginLeft: 20 }}
       resizeMode={'contain'}
-      source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/BTIcon.jpg')}
+      source={require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/BTIcon.jpg')}
     />
     <DrawerItems {...props} />
   </View>

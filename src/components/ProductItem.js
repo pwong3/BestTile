@@ -19,12 +19,60 @@ class ProductItem extends PureComponent {
     super(props);
     this.state = {
       favKeyList: [],
-      favProducts: false,
+      favoritesList: [],
     };
   }
-  removeFavorite = async (item) => {
+
+  getFavoritesList = async () => {
     try {
-      await AsyncStorage.removeItem(item.key);
+      let favList = await AsyncStorage.getItem('@favorites');
+      const parsedList = JSON.parse(favList);
+      if (parsedList === null) {
+        return;
+      } else {
+        this.setState({
+          favoritesList: parsedList,
+        });
+      }
+      this.getFavoritesKeys();
+    } catch (e) {
+      // get key error
+    }
+  };
+  getFavoritesKeys = () => {
+    let allKeys = [];
+    this.state.favoritesList.forEach((item) => {
+      allKeys.push(item.key);
+    });
+    this.setState({
+      favKeyList: allKeys,
+    });
+  };
+  addToFavoriteList = async (item) => {
+    try {
+      this.state.favoritesList.unshift(item);
+      const stringList = this.state.favoritesList;
+      let itemValue = JSON.stringify(stringList);
+      await AsyncStorage.setItem('@favorites', itemValue);
+      ToastAndroid.show(
+        item.productName + ' added to favorites.',
+        ToastAndroid.SHORT,
+      );
+      this.getFavoritesList();
+    } catch (e) {
+      // save error
+    }
+  };
+  removeFavorite = async (item) => {
+    const { favoritesList } = this.state;
+    try {
+      for (let i = 0; i < favoritesList.length; i++) {
+        if (favoritesList[i].key === item.key) {
+          favoritesList.splice(i, 1);
+        }
+      }
+      let itemValue = JSON.stringify(favoritesList);
+      await AsyncStorage.setItem('@favorites', itemValue);
       ToastAndroid.show(
         item.productName + ' removed from favorites.',
         ToastAndroid.SHORT,
@@ -34,32 +82,9 @@ class ProductItem extends PureComponent {
       // remove error
     }
   };
-  setFavorite = async (item) => {
-    try {
-      let itemValue = JSON.stringify(item);
-      await AsyncStorage.setItem(item.key, itemValue);
-      ToastAndroid.show(
-        item.productName + ' added to favorites.',
-        ToastAndroid.SHORT,
-      );
-      this.getFavoritesKeys();
-    } catch (e) {
-      // save error
-    }
-  };
-  getFavoritesKeys = async () => {
-    let allKeys = [];
-    try {
-      allKeys = await AsyncStorage.getAllKeys();
-      this.setState({
-        favKeyList: allKeys,
-      });
-    } catch (e) {
-      // get key error
-    }
-  };
+
   componentDidMount() {
-    this.getFavoritesKeys();
+    this.getFavoritesList();
   }
   render() {
     const {
@@ -111,7 +136,7 @@ class ProductItem extends PureComponent {
                   color={'red'}
                   size={35}
                   style={{ padding: 5, paddingRight: 15 }}
-                  onPress={() => this.setFavorite(itemPassed)}
+                  onPress={() => this.addToFavoriteList(itemPassed)}
                 />
               )}
             </View>
