@@ -50,7 +50,7 @@ class ProductItem extends PureComponent {
   };
   addToFavoriteList = async (item) => {
     try {
-      this.state.favoritesList.unshift(item);
+      this.state.favoritesList.unshift(item); //adds item to beginning of list
       const stringList = this.state.favoritesList;
       let itemValue = JSON.stringify(stringList);
       await AsyncStorage.setItem('@favorites', itemValue);
@@ -316,6 +316,7 @@ const styles = {
   cardSectionStyle: {
     flex: 1,
     flexDirection: 'column',
+    paddingBottom: 11,
   },
   cardSecTitleStyle: {
     paddingLeft: 10,

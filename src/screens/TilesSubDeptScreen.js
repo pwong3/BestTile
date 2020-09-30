@@ -27,28 +27,32 @@ class TilesSubDeptScreen extends Component {
     const cardWidth = this.state.width / 2.0;
     const tileSubDepts = [
       {
-        subDept: 'Ceramic',
-        subDeptHeader: 'Ceramic',
+        filterValue: 'Ceramic',
+        subDeptHeader: 'Wall Tile',
         deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
         orderBy: 'productMaterial',
+        filter: 'equalTo',
       },
       {
-        subDept: 'Porcelain',
-        subDeptHeader: 'Porcelain',
+        filterValue: 'Porcelain',
+        subDeptHeader: 'Porcelain Tile',
         deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
         orderBy: 'productMaterial',
+        filter: 'equalTo',
       },
       {
-        subDept: '12',
-        subDeptHeader: 'Large Format',
+        filterValue: 12,
+        subDeptHeader: 'Large Format Tile',
         deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
         orderBy: 'tileLength',
+        filter: 'startAt',
       },
       {
-        subDept: 'White',
-        subDeptHeader: 'White',
+        filterValue: 4,
+        subDeptHeader: 'Mosaic Tile',
         deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/Pawn2.jpg'),
-        orderBy: 'productColor',
+        orderBy: 'tileLength',
+        filter: 'endAt',
       },
     ];
     return (
@@ -72,15 +76,16 @@ class TilesSubDeptScreen extends Component {
               {tileSubDepts.map((item) => {
                 return (
                   <TouchableOpacity
-                    key={item.subDept}
+                    key={item.filterValue}
                     onPress={() =>
                       this.props.navigation.navigate('ProductsList', {
                         deptPassed: this.props.navigation.getParam(
                           'deptPassed',
                         ),
                         subDeptHeaderPassed: item.subDeptHeader,
-                        subDeptPassed: item.subDept,
+                        filterValuePassed: item.filterValue,
                         orderByPassed: item.orderBy,
+                        filterPassed: item.filter,
                       })
                     }>
                     <View style={{ width: cardWidth }}>

@@ -72,7 +72,7 @@ class FavoritesScreen extends Component {
       });
       this.setState({
         favoritesList: favorites,
-        hasFaves: true,
+        hasFaves: favorites.length === 0 ? false : true,
         isLoading: false,
       });
     } catch (e) {

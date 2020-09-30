@@ -7,7 +7,7 @@ import {
   Image,
   Linking,
   Dimensions,
-  TouchableNativeFeedback,
+  Pressable,
 } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { Card, CardSection, Button, Input } from '../components/common';
@@ -80,15 +80,13 @@ class MapCard extends Component {
                   415-467-8563
                 </Text>
                 <View style={detailsButtonStyle}>
-                  <TouchableNativeFeedback
-                    style={detailsButtonStyle}
-                    background={TouchableNativeFeedback.Ripple('red', true)}
-                    delayPressIn={0}
+                  <Pressable
+                    android_ripple={{ color: 'red' }}
                     onPress={() => this.props.navigation.navigate('SFDetails')}>
                     <View style={detailsButtonStyle}>
                       <Text style={textStyle}>View Details</Text>
                     </View>
-                  </TouchableNativeFeedback>
+                  </Pressable>
                 </View>
               </Card>
             </View>
@@ -108,14 +106,13 @@ class MapCard extends Component {
                 </Text>
 
                 <View style={detailsButtonStyle}>
-                  <TouchableNativeFeedback
-                    background={TouchableNativeFeedback.Ripple('red', true)}
-                    delayPressIn={0}
+                  <Pressable
+                    android_ripple={{ color: 'red' }}
                     onPress={() => this.props.navigation.navigate('SCDetails')}>
                     <View style={detailsButtonStyle}>
                       <Text style={textStyle}>View Details</Text>
                     </View>
-                  </TouchableNativeFeedback>
+                  </Pressable>
                 </View>
               </Card>
             </View>

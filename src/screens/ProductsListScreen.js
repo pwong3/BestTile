@@ -51,48 +51,44 @@ class ProductsListScreen extends Component {
       isModalVisible: !this.state.isModalVisible,
     });
   };
-  loadFirebaseData(deptPassed) {
+
+  prepFirebaseRefs(deptPassed) {
     const rootRef = fire.database().ref();
     const deptRef = rootRef.child('Department');
     const productRef = deptRef.child(deptPassed).orderByChild('sortKey');
-    productRef.once('value', (deptSnapshot) => {
-      const products = [];
-      deptSnapshot.forEach((product) => {
-        products.push({
-          key: product.key,
-          imageUrl: product.val().imageUrl,
-          productBrand: product.val().productBrand,
-          productColor: product.val().productColor,
-          productDepartment: product.val().productDepartment,
-          productDescription: product.val().productDescription,
-          productMadeIn: product.val().productMadeIn,
-          productMaterial: product.val().productMaterial,
-          productModelNumber: product.val().productModelNumber,
-          productName: product.val().productName,
-          productPrice: product.val().productPrice,
-          productSize: product.val().productSize,
-          tileWidth: product.val().tileWidth,
-          tileLength: product.val().tileLength,
-          sortKey: product.val().sortKey,
-        });
-      });
-      this.setState({
-        productsList: products,
-        isLoading: false,
-      });
-    });
+    this.loadFirebaseData(productRef);
   }
-  loadTilesFirebaseData(deptPassed, subDeptPassed, orderBy) {
+  prepEqualToTilesFirebaseRefs(deptPassed, filterValuePassed, orderBy) {
     const rootRef = fire.database().ref();
     const deptRef = rootRef.child('Department');
     const productRef = deptRef
       .child(deptPassed)
       .orderByChild(orderBy)
-      .equalTo(subDeptPassed);
+      .equalTo(filterValuePassed);
+    this.loadFirebaseData(productRef);
+  }
+  prepStartAtTilesFirebaseRefs(deptPassed, filterValuePassed, orderBy) {
+    const rootRef = fire.database().ref();
+    const deptRef = rootRef.child('Department');
+    const productRef = deptRef
+      .child(deptPassed)
+      .orderByChild(orderBy)
+      .startAt(filterValuePassed);
+    this.loadFirebaseData(productRef);
+  }
+  prepEndAtTilesFirebaseRefs(deptPassed, filterValuePassed, orderBy) {
+    const rootRef = fire.database().ref();
+    const deptRef = rootRef.child('Department');
+    const productRef = deptRef
+      .child(deptPassed)
+      .orderByChild(orderBy)
+      .endAt(filterValuePassed);
+    this.loadFirebaseData(productRef);
+  }
+  loadFirebaseData(productRef) {
     productRef.once('value', (deptSnapshot) => {
       const products = [];
       deptSnapshot.forEach((product) => {
-        console.log(product.val().productMaterial);
         products.push({
           key: product.key,
           imageUrl: product.val().imageUrl,
@@ -120,17 +116,39 @@ class ProductsListScreen extends Component {
 
   componentDidMount() {
     const deptPassed = this.props.navigation.getParam('deptPassed');
-    const subDeptPassed = this.props.navigation.getParam('subDeptPassed');
+    const filterValuePassed = this.props.navigation.getParam('filterValuePassed');
     const orderByPassed = this.props.navigation.getParam('orderByPassed');
-    console.log(deptPassed + subDeptPassed);
-    deptPassed === 'Tiles'
-      ? this.loadTilesFirebaseData(deptPassed, subDeptPassed, orderByPassed)
-      : this.loadFirebaseData(deptPassed);
+    const filterPassed = this.props.navigation.getParam('filterPassed');
+    console.log(deptPassed + filterValuePassed + filterPassed);
+    if (filterPassed === 'startAt') {
+      this.prepStartAtTilesFirebaseRefs(
+        deptPassed,
+        filterValuePassed,
+        orderByPassed,
+      );
+    } else if (filterPassed === 'equalTo') {
+      this.prepEqualToTilesFirebaseRefs(
+        deptPassed,
+        filterValuePassed,
+        orderByPassed,
+      );
+    } else if (filterPassed === 'endAt') {
+      this.prepEndAtTilesFirebaseRefs(
+        deptPassed,
+        filterValuePassed,
+        orderByPassed,
+      );
+    } else {
+      this.prepFirebaseRefs(deptPassed);
+    }
+    // deptPassed === 'Tiles'
+    //   ? this.prepEqualToTilesFirebaseRefs(deptPassed, filterValuePassed, orderByPassed)
+    //   : this.prepFirebaseRefs(deptPassed);
   }
 
   render() {
     const productsDB = this.state.productsList.sort((a, b) =>
-      a['sortKey'] > b['sortKey'] ? 1 : -1,
+      a.sortKey > b.sortKey ? 1 : -1,
     );
     const { isModalVisible } = this.state;
 
