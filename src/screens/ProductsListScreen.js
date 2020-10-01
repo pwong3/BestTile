@@ -13,11 +13,6 @@ import fire from '../config/fire';
 import ProductListItem from '../components/ProductListItem';
 import Modal from 'react-native-modal';
 import CheckBox from '@react-native-community/checkbox';
-import {
-  RecyclerListView,
-  DataProvider,
-  LayoutProvider,
-} from 'recyclerlistview';
 
 class ProductsListScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -102,8 +97,8 @@ class ProductsListScreen extends Component {
           productName: product.val().productName,
           productPrice: product.val().productPrice,
           productSize: product.val().productSize,
-          tileWidth: product.val().tileWidth,
-          tileLength: product.val().tileLength,
+          productWidth: product.val().productWidth,
+          productLength: product.val().productLength,
           sortKey: product.val().sortKey,
         });
       });
@@ -150,8 +145,10 @@ class ProductsListScreen extends Component {
     const productsDB = this.state.productsList.sort((a, b) =>
       a.sortKey > b.sortKey ? 1 : -1,
     );
+    const listOfColors = [...new Set(productsDB.map((prod) => prod.productColor))]
+      .sort((a, b) => (a.toLowerCase() > b.toLowerCase() ? 1 : -1));
     const { isModalVisible } = this.state;
-
+    console.log(listOfColors);
     return (
       <View style={{ flex: 1 }} backgroundColor="rgb(230,230,230)">
         {this.state.isLoading ? (
@@ -174,7 +171,8 @@ class ProductsListScreen extends Component {
               onSwipeComplete={() => this.setState({ isModalVisible: false })}
               swipeDirection="down"
               onBackButtonPress={() => this.setState({ isModalVisible: false })}
-              onBackdropPress={() => this.setState({ isModalVisible: false })}>
+              onBackdropPress={() => this.setState({ isModalVisible: false })}
+              useNativeDriver={true}>
               <View
                 style={{
                   padding: 100,
