@@ -262,13 +262,12 @@ const TabsNavigator = createBottomTabNavigator(
       activeTintColor: 'red',
       inactiveTintColor: 'gray',
       labelStyle: {
-        fontFamily: 'Roboto',
-        fontSize: 13,
+        // fontSize: 13,
       },
       style: {
         borderTopWidth: 0.75,
         borderTopColor: '#ddd',
-        height: 50,
+        paddingTop: 5,
       },
     },
   },

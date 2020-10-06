@@ -52,7 +52,6 @@ class FavoritesScreen extends Component {
       const itemValue = await AsyncStorage.getItem('@favorites');
       const favorites = [];
       const itemParsed = JSON.parse(itemValue);
-      console.log('favscreen ' + itemParsed);
       itemParsed.forEach((product) => {
         favorites.push({
           key: product.key,
@@ -88,7 +87,6 @@ class FavoritesScreen extends Component {
         <NavigationEvents onDidFocus={() => this.getFavoritesList()} />
         {this.state.hasFaves ? (
           <View>
-            {console.log(this.state.hasFaves)}
             {this.state.isLoading ? (
               <View
                 style={{

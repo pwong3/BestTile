@@ -172,7 +172,7 @@ class ProductsListScreen extends Component {
               swipeDirection="down"
               onBackButtonPress={() => this.setState({ isModalVisible: false })}
               onBackdropPress={() => this.setState({ isModalVisible: false })}
-              useNativeDriver={true}>
+              backdropTransitionOutTiming={0}>
               <View
                 style={{
                   padding: 100,
@@ -186,7 +186,7 @@ class ProductsListScreen extends Component {
               </View>
             </Modal>
             <VirtualizedList
-              style={{ marginBottom: 35 }}
+              style={{ marginBottom: 40 }}
               data={productsDB}
               keyExtractor={(item) => item.key}
               getItem={(data, index) => data[index]}
