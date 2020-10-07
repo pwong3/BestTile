@@ -158,9 +158,9 @@ class ProductsListScreen extends Component {
           </View>
         ) : (
           <View>
-            <Animated.View>
+            {/* <Animated.View>
               <Button onPress={this.toggleModal} title="Filter" />
-            </Animated.View>
+            </Animated.View> */}
             <Modal
               style={{ justifyContent: 'flex-end', margin: 0 }}
               isVisible={isModalVisible}

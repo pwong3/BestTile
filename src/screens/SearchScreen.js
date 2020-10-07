@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react';
+import React, { Component, useState } from 'react';
 import {
   TextInput,
   Text,
@@ -10,18 +10,16 @@ import { Card } from '../components/common/Card';
 import fire from '../config/fire';
 import ProductListItem from '../components/ProductListItem';
 
-class SearchBar extends Component {
-  render() {
-    const { textInputStyle } = styles;
-    return (
-      <TextInput
-        style={textInputStyle}
-        placeholderTextColor="grey"
-        placeholder="Search"
-      />
-    );
-  }
-}
+const SearchBar = () => {
+  const [value, onChangeText] = React.useState('Search');
+  const { textInputStyle } = styles;
+  return (
+    <TextInput
+      style={textInputStyle}
+      placeholderTextColor="grey"
+    />
+  );
+};
 
 class SearchScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -48,7 +46,9 @@ class SearchScreen extends Component {
     //console.log(deptPassed);//deptPassed equals name of dept
     const rootRef = fire.database().ref();
     const deptRef = rootRef.child('Department');
-    const productRef = deptRef.child('Faucets').orderByChild('productColor');
+    const productRef = deptRef
+      .child('Accessories')
+      .orderByChild('searchKeywords');
     productRef.on('value', (deptSnapshot) => {
       const products = [];
       deptSnapshot.forEach((prodSnapshot) => {

@@ -54,15 +54,16 @@ const ProductsStackNavigator = createStackNavigator({
           onPress={() => navigation.goBack(null)}
         />
       ),
-      /*
-            headerRight:
-            <MatIcon style={{ margin: 15 }}
-                name={'search'}
-                color={'white'}
-                size={25}
-                onPress={() => navigation.navigate('SearchScreen')}
-            />
-            */
+
+      headerRight: (
+        <MatIcon
+          style={{ margin: 15 }}
+          name={'magnify'}
+          color={'white'}
+          size={25}
+          onPress={() => navigation.navigate('SearchScreen')}
+        />
+      ),
     }),
   },
   TilesSubDept: {
@@ -74,9 +75,9 @@ const ProductsStackNavigator = createStackNavigator({
   ProductItem: {
     screen: ProductItemScreen,
   },
-  //SearchScreen: {
-  //    screen: SearchScreen,
-  //}
+  SearchScreen: {
+    screen: SearchScreen,
+  },
 });
 /*
 const AuthLoadingSwitchNavigator = createSwitchNavigator(
@@ -180,15 +181,15 @@ const HomeStackNavigator = createStackNavigator({
           onPress={() => navigation.openDrawer()}
         />
       ),
-      /*
-        headerRight:
-            <MatIcon style={{ margin: 15 }}
-                name={'search'}
-                color={'white'}
-                size={25}
-                onPress={() => navigation.navigate('SearchScreen')}
-            />
-            */
+      headerRight: (
+        <MatIcon
+          style={{ margin: 15 }}
+          name={'magnify'}
+          color={'white'}
+          size={25}
+          onPress={() => navigation.navigate('SearchScreen')}
+        />
+      ),
     }),
   },
   SFDetails: {
@@ -197,16 +198,16 @@ const HomeStackNavigator = createStackNavigator({
   SCDetails: {
     screen: SCDetailsScreen,
   },
-  //SearchScreen: {
-  //   screen: SearchScreen,
-  //},
+  SearchScreen: {
+    screen: SearchScreen,
+  },
   ProductsDept: {
     screen: ProductsDeptScreen,
     navigationOptions: ({ navigation }) => ({
       headerRight: (
         <MatIcon
           style={{ margin: 15 }}
-          name={'search'}
+          name={'magnify'}
           size={25}
           onPress={() => navigation.navigate('SearchScreen')}
         />
@@ -276,9 +277,9 @@ const TabsNavigator = createBottomTabNavigator(
 const DrawerContent = (props) => (
   <View>
     <Image
-      style={{ width: '30%', marginLeft: 20 }}
+      style={{ width: '40%', height: '33%', marginLeft: 20 }}
       resizeMode={'contain'}
-      source={require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/BTIcon.jpg')}
+      source={require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/BTIcon.png')}
     />
     <DrawerItems {...props} />
   </View>
