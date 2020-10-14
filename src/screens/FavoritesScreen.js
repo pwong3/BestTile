@@ -17,11 +17,14 @@ import { NavigationEvents } from 'react-navigation';
 class FavoritesScreen extends Component {
   static navigationOptions = {
     title: 'Favorites',
-    headerStyle: { backgroundColor: 'red' },
+    headerStyle: { 
+      backgroundColor: 'red',
+      height: 50 
+    },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'normal',
-      fontSize: 16,
+      fontSize: 20,
     },
   };
   constructor(props) {

@@ -24,11 +24,14 @@ class ProductsListScreen extends Component {
     }
     return {
       title: title,
-      headerStyle: { backgroundColor: 'red' },
+      headerStyle: { 
+        backgroundColor: 'red',
+        height: 50 
+      },
       headerTintColor: '#fff',
       headerTitleStyle: {
         fontWeight: 'normal',
-        fontSize: 16,
+        fontSize: 20,
       },
     };
   };

@@ -31,13 +31,14 @@ class SearchScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerTitle: <SearchBar />,
-      headerStyle: {
+      headerStyle: { 
         backgroundColor: 'red',
+        height: 50 
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
         fontWeight: 'normal',
-        fontSize: 16,
+        fontSize: 20,
       },
     };
   };

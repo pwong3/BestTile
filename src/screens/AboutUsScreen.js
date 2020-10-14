@@ -13,13 +13,14 @@ import { Card, CardSection } from '../components/common';
 class AboutUsScreen extends Component {
   static navigationOptions = {
     title: 'About Us',
-    headerStyle: {
+    headerStyle: { 
       backgroundColor: 'red',
+      height: 50 
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'normal',
-      fontSize: 16,
+      fontSize: 20,
     },
   };
 

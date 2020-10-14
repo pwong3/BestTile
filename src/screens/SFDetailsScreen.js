@@ -17,13 +17,14 @@ const SFMarker = { latitude: LATITUDE, longitude: LONGITUDE };
 class SFDetailsScreen extends Component {
   static navigationOptions = {
     title: 'San Francisco',
-    headerStyle: {
+    headerStyle: { 
       backgroundColor: 'red',
+      height: 50 
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'normal',
-      fontSize: 16,
+      fontSize: 20,
     },
   };
 

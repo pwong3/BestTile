@@ -67,6 +67,11 @@ androidx/fragment/R.java
  androidx.fragment.R$styleable
 androidx/savedstate/R.java
  androidx.savedstate.R
+com/besttile/ReactNativeFlipper.java
+ com.besttile.ReactNativeFlipper
+ com.besttile.ReactNativeFlipper$1
+ com.besttile.ReactNativeFlipper$2
+ com.besttile.ReactNativeFlipper$2$1
 com/google/android/gms/measurement_base/R.java
  com.google.android.gms.measurement_base.R
 com/facebook/fresco/soloader/R.java
@@ -100,6 +105,19 @@ androidx/asynclayoutinflater/R.java
  androidx.asynclayoutinflater.R$string
  androidx.asynclayoutinflater.R$style
  androidx.asynclayoutinflater.R$styleable
+com/google/firebase/R.java
+ com.google.firebase.R
+ com.google.firebase.R$attr
+ com.google.firebase.R$bool
+ com.google.firebase.R$color
+ com.google.firebase.R$dimen
+ com.google.firebase.R$drawable
+ com.google.firebase.R$id
+ com.google.firebase.R$integer
+ com.google.firebase.R$layout
+ com.google.firebase.R$string
+ com.google.firebase.R$style
+ com.google.firebase.R$styleable
 com/facebook/flipper/plugins/fresco/R.java
  com.facebook.flipper.plugins.fresco.R
  com.facebook.flipper.plugins.fresco.R$anim
@@ -115,19 +133,6 @@ com/facebook/flipper/plugins/fresco/R.java
  com.facebook.flipper.plugins.fresco.R$string
  com.facebook.flipper.plugins.fresco.R$style
  com.facebook.flipper.plugins.fresco.R$styleable
-com/google/firebase/R.java
- com.google.firebase.R
- com.google.firebase.R$attr
- com.google.firebase.R$bool
- com.google.firebase.R$color
- com.google.firebase.R$dimen
- com.google.firebase.R$drawable
- com.google.firebase.R$id
- com.google.firebase.R$integer
- com.google.firebase.R$layout
- com.google.firebase.R$string
- com.google.firebase.R$style
- com.google.firebase.R$styleable
 androidx/interpolator/R.java
  androidx.interpolator.R
 com/google/android/gms/maps/R.java
@@ -183,18 +188,6 @@ androidx/media/R.java
  androidx.media.R$string
  androidx.media.R$style
  androidx.media.R$styleable
-com/facebook/fresco/memorytypes/nativememory/R.java
- com.facebook.fresco.memorytypes.nativememory.R
- com.facebook.fresco.memorytypes.nativememory.R$attr
- com.facebook.fresco.memorytypes.nativememory.R$color
- com.facebook.fresco.memorytypes.nativememory.R$dimen
- com.facebook.fresco.memorytypes.nativememory.R$drawable
- com.facebook.fresco.memorytypes.nativememory.R$id
- com.facebook.fresco.memorytypes.nativememory.R$integer
- com.facebook.fresco.memorytypes.nativememory.R$layout
- com.facebook.fresco.memorytypes.nativememory.R$string
- com.facebook.fresco.memorytypes.nativememory.R$style
- com.facebook.fresco.memorytypes.nativememory.R$styleable
 com/reactnativecommunity/toolbarandroid/R.java
  com.reactnativecommunity.toolbarandroid.R
  com.reactnativecommunity.toolbarandroid.R$anim
@@ -210,6 +203,18 @@ com/reactnativecommunity/toolbarandroid/R.java
  com.reactnativecommunity.toolbarandroid.R$style
  com.reactnativecommunity.toolbarandroid.R$styleable
  com.reactnativecommunity.toolbarandroid.R$xml
+com/facebook/fresco/memorytypes/nativememory/R.java
+ com.facebook.fresco.memorytypes.nativememory.R
+ com.facebook.fresco.memorytypes.nativememory.R$attr
+ com.facebook.fresco.memorytypes.nativememory.R$color
+ com.facebook.fresco.memorytypes.nativememory.R$dimen
+ com.facebook.fresco.memorytypes.nativememory.R$drawable
+ com.facebook.fresco.memorytypes.nativememory.R$id
+ com.facebook.fresco.memorytypes.nativememory.R$integer
+ com.facebook.fresco.memorytypes.nativememory.R$layout
+ com.facebook.fresco.memorytypes.nativememory.R$string
+ com.facebook.fresco.memorytypes.nativememory.R$style
+ com.facebook.fresco.memorytypes.nativememory.R$styleable
 androidx/swiperefreshlayout/R.java
  androidx.swiperefreshlayout.R
  androidx.swiperefreshlayout.R$attr
@@ -796,18 +801,6 @@ androidx/slidingpanelayout/R.java
  androidx.slidingpanelayout.R$string
  androidx.slidingpanelayout.R$style
  androidx.slidingpanelayout.R$styleable
-com/facebook/nativeimagetranscoder/R.java
- com.facebook.nativeimagetranscoder.R
- com.facebook.nativeimagetranscoder.R$attr
- com.facebook.nativeimagetranscoder.R$color
- com.facebook.nativeimagetranscoder.R$dimen
- com.facebook.nativeimagetranscoder.R$drawable
- com.facebook.nativeimagetranscoder.R$id
- com.facebook.nativeimagetranscoder.R$integer
- com.facebook.nativeimagetranscoder.R$layout
- com.facebook.nativeimagetranscoder.R$string
- com.facebook.nativeimagetranscoder.R$style
- com.facebook.nativeimagetranscoder.R$styleable
 com/reactnativecommunity/webview/R.java
  com.reactnativecommunity.webview.R
  com.reactnativecommunity.webview.R$anim
@@ -823,6 +816,18 @@ com/reactnativecommunity/webview/R.java
  com.reactnativecommunity.webview.R$style
  com.reactnativecommunity.webview.R$styleable
  com.reactnativecommunity.webview.R$xml
+com/facebook/nativeimagetranscoder/R.java
+ com.facebook.nativeimagetranscoder.R
+ com.facebook.nativeimagetranscoder.R$attr
+ com.facebook.nativeimagetranscoder.R$color
+ com.facebook.nativeimagetranscoder.R$dimen
+ com.facebook.nativeimagetranscoder.R$drawable
+ com.facebook.nativeimagetranscoder.R$id
+ com.facebook.nativeimagetranscoder.R$integer
+ com.facebook.nativeimagetranscoder.R$layout
+ com.facebook.nativeimagetranscoder.R$string
+ com.facebook.nativeimagetranscoder.R$style
+ com.facebook.nativeimagetranscoder.R$styleable
 com/google/firebase/measurement/R.java
  com.google.firebase.measurement.R
 androidx/viewpager/R.java

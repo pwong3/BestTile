@@ -4,11 +4,14 @@ import { NewProdsListScreen } from './NewProdsListScreen';
 class NewProdsScreen extends Component {
   static navigationOptions = {
     title: 'New',
-    headerStyle: { backgroundColor: 'red' },
+    headerStyle: { 
+      backgroundColor: 'red',
+      height: 50 
+    },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'normal',
-      fontSize: 16,
+      fontSize: 20,
     },
   };
 

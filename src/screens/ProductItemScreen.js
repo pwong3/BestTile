@@ -3,11 +3,14 @@ import { ProductItem } from '../components/ProductItem';
 
 class ProductItemScreen extends Component {
   static navigationOptions = {
-    headerStyle: { backgroundColor: 'red' },
+    headerStyle: { 
+      backgroundColor: 'red',
+      height: 50 
+    },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'normal',
-      fontSize: 16,
+      fontSize: 20,
     },
   };
   render() {

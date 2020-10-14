@@ -18,11 +18,14 @@ const SCMarker = { latitude: LATITUDE, longitude: LONGITUDE };
 class SCDetailsScreen extends Component {
   static navigationOptions = {
     title: 'Santa Clara',
-    headerStyle: { backgroundColor: 'red' },
+    headerStyle: { 
+      backgroundColor: 'red',
+      height: 50 
+    },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'normal',
-      fontSize: 16,
+      fontSize: 20,
     },
   };
 

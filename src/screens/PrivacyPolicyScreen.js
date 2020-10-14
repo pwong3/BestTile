@@ -14,11 +14,14 @@ import { Card, CardSection } from '../components/common';
 class PrivacyPolicyScreen extends Component {
   static navigationOptions = {
     title: 'Privacy Policy',
-    headerStyle: { backgroundColor: 'red' },
+    headerStyle: { 
+      backgroundColor: 'red',
+      height: 50 
+    },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'normal',
-      fontSize: 16,
+      fontSize: 20,
     },
   };
 
