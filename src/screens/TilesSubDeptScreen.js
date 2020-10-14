@@ -19,7 +19,7 @@ class TilesSubDeptScreen extends Component {
   };
 
   state = {
-    width: '', //used to divide the dept cards in 2 equal size cards when side by side
+    width: 0, //used to divide the dept cards in 2 equal size cards when side by side
   };
 
   render() {
@@ -71,6 +71,7 @@ class TilesSubDeptScreen extends Component {
                 flexDirection: 'row',
                 flexWrap: 'wrap',
                 marginBottom: 5,
+                width: this.state.width,
               }}>
               {/*prodPassed: dept[*] is a props that is passed to the productListScreen*/}
               {tileSubDepts.map((item) => {

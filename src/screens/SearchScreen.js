@@ -10,13 +10,19 @@ import { Card } from '../components/common/Card';
 import fire from '../config/fire';
 import ProductListItem from '../components/ProductListItem';
 
+
 const SearchBar = () => {
-  const [value, onChangeText] = React.useState('Search');
+  const [value, onChangeText] = useState('Search');
+
   const { textInputStyle } = styles;
   return (
     <TextInput
       style={textInputStyle}
-      placeholderTextColor="grey"
+      placeholderTextColor='grey'
+      onChangeText={text => onChangeText(text)}
+      value={value}
+      returnKeyLabel='search'
+      returnKeyType='search'
     />
   );
 };
@@ -41,36 +47,36 @@ class SearchScreen extends Component {
       searchList: [],
     };
   }
-  componentDidMount() {
+  searchList() {
     //const deptPassed = this.props.navigation.getParam('deptPassed');//getting the dept name to the pull correct database
     //console.log(deptPassed);//deptPassed equals name of dept
     const rootRef = fire.database().ref();
     const deptRef = rootRef.child('Department');
     const productRef = deptRef
       .child('Accessories')
-      .orderByChild('searchKeywords');
+      .orderByKey();
     productRef.on('value', (deptSnapshot) => {
       const products = [];
       deptSnapshot.forEach((prodSnapshot) => {
-        //console.log(prodSnapshot.toJSON());
-        //console.log(prodSnapshot.val());
-        products.push({
-          key: prodSnapshot.key,
-          productBrand: prodSnapshot.val().productBrand,
-          productName: prodSnapshot.val().productName,
-          productModelNumber: prodSnapshot.val().productModelNumber,
-          productMaterial: prodSnapshot.val().productMaterial,
-          productPrice: prodSnapshot.val().productPrice,
-          productMadeIn: prodSnapshot.val().productMadeIn,
-          productSize: prodSnapshot.val().productSize,
-          productDescription: prodSnapshot.val().productDescription,
-          imageUrl: prodSnapshot.val().imageUrl,
-        });
-        //console.log(products)
-        //this.products = products.reverse();
-        this.setState({
-          searchList: products,
-        });
+        if (prodSnapshot.val().searchKeywords === value) {
+          products.push({
+            key: prodSnapshot.key,
+            productBrand: prodSnapshot.val().productBrand,
+            productName: prodSnapshot.val().productName,
+            productModelNumber: prodSnapshot.val().productModelNumber,
+            productMaterial: prodSnapshot.val().productMaterial,
+            productPrice: prodSnapshot.val().productPrice,
+            productMadeIn: prodSnapshot.val().productMadeIn,
+            productSize: prodSnapshot.val().productSize,
+            productDescription: prodSnapshot.val().productDescription,
+            imageUrl: prodSnapshot.val().imageUrl,
+          });
+          //console.log(products)
+          //this.products = products.reverse();
+          this.setState({
+            searchList: products,
+          });
+        }
       });
     });
   }
