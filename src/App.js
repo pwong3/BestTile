@@ -85,7 +85,11 @@ const ProductsStackNavigator = createStackNavigator({
       ),
     }),
   },
-});
+},
+  {
+    headerLayoutPreset: 'center'
+  }
+);
 /*
 const AuthLoadingSwitchNavigator = createSwitchNavigator(
     {
@@ -120,7 +124,11 @@ const FavoritesStackNavigator = createStackNavigator({
   ProductItem: {
     screen: ProductItemScreen,
   },
-});
+},
+  {
+    headerLayoutPreset: 'center'
+  }
+);
 const AboutUsStackNavigator = createStackNavigator({
   AboutUs: {
     screen: AboutUsScreen,
@@ -134,7 +142,11 @@ const AboutUsStackNavigator = createStackNavigator({
       ),
     }),
   },
-});
+},
+  {
+    headerLayoutPreset: 'center'
+  }
+);
 const PrivacyPolicyStackNavigator = createStackNavigator({
   PrivacyPolicy: {
     screen: PrivacyPolicyScreen,
@@ -148,7 +160,11 @@ const PrivacyPolicyStackNavigator = createStackNavigator({
       ),
     }),
   },
-});
+},
+  {
+    headerLayoutPreset: 'center'
+  }
+);
 const NewProdsStackNavigator = createStackNavigator(
   {
     NewProds: {
@@ -171,8 +187,8 @@ const NewProdsStackNavigator = createStackNavigator(
     },
   },
   {
-    navigationOptions: {},
-  },
+    headerLayoutPreset: 'center'
+  }
 );
 
 const HomeStackNavigator = createStackNavigator({
@@ -205,9 +221,9 @@ const HomeStackNavigator = createStackNavigator({
   SCDetails: {
     screen: SCDetailsScreen,
   },
-  ProductItem: {
-    screen: ProductItemScreen,
-  },
+  // ProductItem: {
+  //   screen: ProductItemScreen,
+  // },
   SearchScreen: {
     screen: SearchScreen,
     navigationOptions: ({ navigation }) => ({
@@ -219,24 +235,25 @@ const HomeStackNavigator = createStackNavigator({
       ),
     }),
   },
-  ProductsDept: {
-    screen: ProductsDeptScreen,
-    navigationOptions: ({ navigation }) => ({
-      headerRight: (
-        <MatIcon
-          style={{ margin: 15 }}
-          name={'magnify'}
-          color={'white'}
-          size={25}
-          onPress={() => navigation.navigate('SearchScreen')}
-        />
-      ),
-    }),
-    //  AboutUs: {
-    //    screen: AboutUsScreen,
-    //}
-  },
-});
+  // ProductsDept: {
+  //   screen: ProductsDeptScreen,
+  //   navigationOptions: ({ navigation }) => ({
+  //     headerRight: (
+  //       <MatIcon
+  //         style={{ margin: 15 }}
+  //         name={'magnify'}
+  //         color={'white'}
+  //         size={25}
+  //         onPress={() => navigation.navigate('SearchScreen')}
+  //       />
+  //     ),
+  //   }),
+  // },
+},
+  {
+    headerLayoutPreset: 'center'
+  }
+);
 
 const TabsNavigator = createBottomTabNavigator(
   {
@@ -310,7 +327,7 @@ const DrawerNavigator = createDrawerNavigator(
       screen: TabsNavigator,
     },
     Products: {
-      screen: ProductsStackNavigator,
+      screen: TabsNavigator,
     },
     New: {
       screen: NewProdsStackNavigator,
@@ -318,7 +335,7 @@ const DrawerNavigator = createDrawerNavigator(
     Favorites: {
       screen: FavoritesStackNavigator,
     },
-    AboutUs: {
+    'About Us': {
       screen: AboutUsStackNavigator,
     },
     /*
@@ -326,13 +343,13 @@ const DrawerNavigator = createDrawerNavigator(
         screen: AuthLoadingSwitchNavigator,
     },
     */
-    PrivacyPolicy: {
+    'Privacy Policy': {
       screen: PrivacyPolicyStackNavigator,
     },
   },
   {
     contentComponent: DrawerContent,
-    drawerWidth: 250,
+    // drawerWidth: 250,
     overlayColor: 'rgba(0,0,0,0.7)',
     resetOnBlur: true,
     defaultNavigationOptions: ({ navigation }) => ({
@@ -347,11 +364,11 @@ const DrawerNavigator = createDrawerNavigator(
           iconName = 'heart';
         } else if (routeName === 'New') {
           iconName = 'new-box';
-        } else if (routeName === 'AboutUs') {
+        } else if (routeName === 'About Us') {
           iconName = 'information';
           //  } else if (routeName === "Account") {
           //    iconName = 'account-circle'
-        } else if (routeName === 'PrivacyPolicy') {
+        } else if (routeName === 'Privacy Policy') {
           iconName = 'lock';
           // You can return any component that you like here! We usually use an
           // icon component from react-native-vector-icons

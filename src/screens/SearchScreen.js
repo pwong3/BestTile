@@ -64,11 +64,11 @@ class SearchScreen extends Component {
   }
   onSubmitEditing = () => {
     const { searchValue } = this.state
-    if (searchValue === ('' || null)) {
+    if (searchValue === '' || searchValue === null) {
       return
     }
     this.setState({ isLoading: true })
-    this.searchDB(searchValue);
+    this.searchDB(searchValue.toLowerCase());
   }
   searchDB(value) {
     const rootRef = fire.database().ref();
@@ -109,17 +109,18 @@ class SearchScreen extends Component {
             this.setState({
               searchList: products,
               isLoading: false,
+              noResults: false,
             });
           }
         })
       })
-      if (this.state.searchList === 0) {
-        this.setState({
-          isLoading: false,
-          noResults: true
-        })
-      }
     })
+    if (products.length === 0 && Array.isArray(products)) {
+      this.setState({
+        isLoading: false,
+        noResults: true
+      })
+    }
   }
   componentDidMount() {
     this.props.navigation.setParams({
