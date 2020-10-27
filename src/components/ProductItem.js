@@ -49,9 +49,10 @@ class ProductItem extends PureComponent {
     });
   };
   addToFavoriteList = async (item) => {
+    const { favoritesList } = this.state;
     try {
-      this.state.favoritesList.unshift(item); //adds item to beginning of list
-      const stringList = this.state.favoritesList;
+      favoritesList.unshift(item); //adds item to beginning of list
+      const stringList = favoritesList; //have to put in separate line b/c unshift returns length of array
       let itemValue = JSON.stringify(stringList);
       await AsyncStorage.setItem('@favorites', itemValue);
       ToastAndroid.show(
@@ -110,16 +111,16 @@ class ProductItem extends PureComponent {
             }}>
             <View style={{ flexDirection: 'column', flex: 1 }}>
               {itemPassed.productBrand === '' ||
-              itemPassed.productDepartment === 'Tiles' ? (
-                <Text style={productBrandText}>{itemPassed.productName}</Text>
-              ) : (
-                <View>
-                  <Text style={productBrandText}>
-                    {itemPassed.productBrand}
-                  </Text>
-                  <Text style={productDescText}>{itemPassed.productName}</Text>
-                </View>
-              )}
+                itemPassed.productDepartment === 'Tiles' ? (
+                  <Text style={productBrandText}>{itemPassed.productName}</Text>
+                ) : (
+                  <View>
+                    <Text style={productBrandText}>
+                      {itemPassed.productBrand}
+                    </Text>
+                    <Text style={productDescText}>{itemPassed.productName}</Text>
+                  </View>
+                )}
             </View>
             <View>
               {this.state.favKeyList.includes(itemPassed.key) ? (
@@ -131,14 +132,14 @@ class ProductItem extends PureComponent {
                   onPress={() => this.removeFavorite(itemPassed)}
                 />
               ) : (
-                <MatIcon
-                  name={'heart-outline'}
-                  color={'red'}
-                  size={35}
-                  style={{ padding: 5, paddingRight: 15 }}
-                  onPress={() => this.addToFavoriteList(itemPassed)}
-                />
-              )}
+                  <MatIcon
+                    name={'heart-outline'}
+                    color={'red'}
+                    size={35}
+                    style={{ padding: 5, paddingRight: 15 }}
+                    onPress={() => this.addToFavoriteList(itemPassed)}
+                  />
+                )}
             </View>
           </View>
         </CardSection>
@@ -158,30 +159,30 @@ class ProductItem extends PureComponent {
               />
             </View>
           ) : (
-            <ScrollView
-              style={{
-                alignContent: 'center',
-              }}
-              snapToInterval={340}
-              showsHorizontalScrollIndicator={false}
-              pagingEnabled
-              decelerationRate={0}
-              horizontal={true}>
-              {itemPassed.imageUrl.map((image) => (
-                <Image
-                  key={image.name}
-                  source={{ uri: image.url }}
-                  style={{
-                    width: 300,
-                    height: 300,
-                    margin: 20,
-                    alignSelf: 'center',
-                    resizeMode: 'contain',
-                  }}
-                />
-              ))}
-            </ScrollView>
-          )}
+              <ScrollView
+                style={{
+                  alignContent: 'center',
+                }}
+                snapToInterval={340}
+                showsHorizontalScrollIndicator={false}
+                pagingEnabled
+                decelerationRate={0}
+                horizontal={true}>
+                {itemPassed.imageUrl.map((image) => (
+                  <Image
+                    key={image.name}
+                    source={{ uri: image.url }}
+                    style={{
+                      width: 300,
+                      height: 300,
+                      margin: 20,
+                      alignSelf: 'center',
+                      resizeMode: 'contain',
+                    }}
+                  />
+                ))}
+              </ScrollView>
+            )}
         </CardSection>
         {itemPassed.productDescription === '' ? null : (
           <View>

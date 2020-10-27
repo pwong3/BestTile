@@ -9,9 +9,9 @@ class TilesSubDeptScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: navigation.getParam('deptPassed'),
-      headerStyle: { 
+      headerStyle: {
         backgroundColor: 'red',
-        height: 50 
+        height: 50
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -32,28 +32,28 @@ class TilesSubDeptScreen extends Component {
       {
         filterValue: 'Ceramic',
         subDeptHeader: 'Wall Tile',
-        deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/asarorlvblancoceramic.jpg'),
+        deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/asarorlvblancoceramic.jpg'),
         orderBy: 'productMaterial',
         filter: 'equalTo',
       },
       {
         filterValue: 'Porcelain',
         subDeptHeader: 'Porcelain Tile',
-        deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/g.lasablanco35x70.jpg'),
+        deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/g.lasablanco35x70.jpg'),
         orderBy: 'productMaterial',
         filter: 'equalTo',
       },
       {
-        filterValue: 13,
+        filterValue: 18,
         subDeptHeader: 'Large Format Tile',
-        deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/newiceblacklarge.jpg'),
+        deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/newiceblacklarge.jpg'),
         orderBy: 'productLength',
         filter: 'startAt',
       },
       {
         filterValue: 4,
         subDeptHeader: 'Mosaic Tile',
-        deptImage: require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/belukagris2x2.jpg'),
+        deptImage: require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/belukagris2x2.jpg'),
         orderBy: 'productLength',
         filter: 'endAt',
       },

@@ -18,8 +18,8 @@ class ProductListItem extends PureComponent {
       imageStyle,
     } = styles; //object destructuring
     const { item, itemScreen } = this.props;
-    const width125 = Dimensions.get('window').width - 125;
-    const width135 = Dimensions.get('window').width - 135;
+    const widthTilesName = Dimensions.get('window').width - 125;
+    const widthProductName = Dimensions.get('window').width - 145;
     return (
       <TouchableOpacity
         onPress={() =>
@@ -29,8 +29,8 @@ class ProductListItem extends PureComponent {
           style={{
             flexDirection: 'row',
             justifyContent: 'flex-start',
-            paddingTop: 10,
-            paddingBottom: 8,
+            paddingTop: 8,
+            paddingBottom: 10,
           }}>
           <View>
             <Image source={{ uri: item.imageUrl[0].url }} style={imageStyle} />
@@ -45,7 +45,7 @@ class ProductListItem extends PureComponent {
                 <View
                   style={{
                     flexDirection: 'row',
-                    width: width125,
+                    width: widthTilesName,
                   }}>
                   <Text style={productBrandText}>{item.productName}</Text>
                 </View>
@@ -56,7 +56,7 @@ class ProductListItem extends PureComponent {
                 <View
                   style={{
                     flexDirection: 'row',
-                    width: width135,
+                    width: widthProductName,
                   }}>
                   <Text style={productNameText}>{item.productName}</Text>
                 </View>

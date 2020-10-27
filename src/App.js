@@ -45,7 +45,7 @@ class App extends Component {
 }
 
 const ProductsStackNavigator = createStackNavigator({
-  Products: {
+  ProductsDept: {
     screen: ProductsDeptScreen,
     navigationOptions: ({ navigation }) => ({
       headerLeft: (
@@ -54,7 +54,6 @@ const ProductsStackNavigator = createStackNavigator({
           onPress={() => navigation.goBack(null)}
         />
       ),
-
       headerRight: (
         <MatIcon
           style={{ margin: 15 }}
@@ -77,6 +76,14 @@ const ProductsStackNavigator = createStackNavigator({
   },
   SearchScreen: {
     screen: SearchScreen,
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: (
+        <HeaderBackButton
+          tintColor="white"
+          onPress={() => navigation.goBack(null)}
+        />
+      ),
+    }),
   },
 });
 /*
@@ -198,8 +205,19 @@ const HomeStackNavigator = createStackNavigator({
   SCDetails: {
     screen: SCDetailsScreen,
   },
+  ProductItem: {
+    screen: ProductItemScreen,
+  },
   SearchScreen: {
     screen: SearchScreen,
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: (
+        <HeaderBackButton
+          tintColor="white"
+          onPress={() => navigation.goBack(null)}
+        />
+      ),
+    }),
   },
   ProductsDept: {
     screen: ProductsDeptScreen,
@@ -208,6 +226,7 @@ const HomeStackNavigator = createStackNavigator({
         <MatIcon
           style={{ margin: 15 }}
           name={'magnify'}
+          color={'white'}
           size={25}
           onPress={() => navigation.navigate('SearchScreen')}
         />
@@ -279,7 +298,7 @@ const DrawerContent = (props) => (
     <Image
       style={{ width: '40%', height: '33%', marginLeft: 20 }}
       resizeMode={'contain'}
-      source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/BTIcon.png')}
+      source={require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/BTIcon.png')}
     />
     <DrawerItems {...props} />
   </View>
@@ -313,6 +332,7 @@ const DrawerNavigator = createDrawerNavigator(
   },
   {
     contentComponent: DrawerContent,
+    drawerWidth: 250,
     overlayColor: 'rgba(0,0,0,0.7)',
     resetOnBlur: true,
     defaultNavigationOptions: ({ navigation }) => ({

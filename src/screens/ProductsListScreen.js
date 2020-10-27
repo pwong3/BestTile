@@ -65,6 +65,7 @@ class ProductsListScreen extends Component {
       .equalTo(filterValuePassed);
     this.loadFirebaseData(productRef);
   }
+  //startAt - where filter starts
   prepStartAtTilesFirebaseRefs(deptPassed, filterValuePassed, orderBy) {
     const rootRef = fire.database().ref();
     const deptRef = rootRef.child('Department');
@@ -74,6 +75,7 @@ class ProductsListScreen extends Component {
       .startAt(filterValuePassed);
     this.loadFirebaseData(productRef);
   }
+  //endAt - where filter ends
   prepEndAtTilesFirebaseRefs(deptPassed, filterValuePassed, orderBy) {
     const rootRef = fire.database().ref();
     const deptRef = rootRef.child('Department');
@@ -152,6 +154,7 @@ class ProductsListScreen extends Component {
       .sort((a, b) => (a.toLowerCase() > b.toLowerCase() ? 1 : -1));
     const { isModalVisible } = this.state;
     console.log(listOfColors);
+    
     return (
       <View style={{ flex: 1 }} backgroundColor="rgb(230,230,230)">
         {this.state.isLoading ? (
@@ -189,7 +192,7 @@ class ProductsListScreen extends Component {
               </View>
             </Modal>
             <VirtualizedList
-              style={{ marginBottom: 40 }}
+              // style={{ marginBottom: 40 }}
               data={productsDB}
               keyExtractor={(item) => item.key}
               getItem={(data, index) => data[index]}

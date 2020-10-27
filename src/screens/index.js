@@ -14,3 +14,4 @@ export * from './ProductItemScreen';
 export * from './SearchScreen';
 export * from './NewProdsListScreen';
 export * from './TilesSubDeptScreen';
+export * from './SearchScreen';
