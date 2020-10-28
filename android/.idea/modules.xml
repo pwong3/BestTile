@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BestTile.iml" filepath="$PROJECT_DIR$/.idea/modules/BestTile.iml" group="BestTile" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="BestTile/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1041784860/react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/1041784860/react-native-community_async-storage.iml" group="BestTile/react-native-community_async-storage" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1853391279/react-native-community_checkbox.iml" filepath="$PROJECT_DIR$/.idea/modules/-1853391279/react-native-community_checkbox.iml" group="BestTile/react-native-community_checkbox" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1624477935/react-native-community_slider.iml" filepath="$PROJECT_DIR$/.idea/modules/1624477935/react-native-community_slider.iml" group="BestTile/react-native-community_slider" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-767463793/react-native-community_toolbar-android.iml" filepath="$PROJECT_DIR$/.idea/modules/-767463793/react-native-community_toolbar-android.iml" group="BestTile/react-native-community_toolbar-android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1290604369/react-native-firebase.iml" filepath="$PROJECT_DIR$/.idea/modules/-1290604369/react-native-firebase.iml" group="BestTile/react-native-firebase" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/202402014/react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/202402014/react-native-gesture-handler.iml" group="BestTile/react-native-gesture-handler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-328762443/react-native-maps.iml" filepath="$PROJECT_DIR$/.idea/modules/-328762443/react-native-maps.iml" group="BestTile/react-native-maps" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1200398689/react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/-1200398689/react-native-screens.iml" group="BestTile/react-native-screens" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1427520170/react-native-splash-screen.iml" filepath="$PROJECT_DIR$/.idea/modules/1427520170/react-native-splash-screen.iml" group="BestTile/react-native-splash-screen" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1321962424/react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/1321962424/react-native-vector-icons.iml" group="BestTile/react-native-vector-icons" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1941456111/react-native-webview.iml" filepath="$PROJECT_DIR$/.idea/modules/-1941456111/react-native-webview.iml" group="BestTile/react-native-webview" />
+    </modules>
+  </component>
+</project>
