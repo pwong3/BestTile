@@ -67,7 +67,7 @@ class SearchScreen extends Component {
     if (searchValue === '' || searchValue === null) {
       return
     }
-    this.setState({ isLoading: true })
+    this.setState({ isLoading: true, searchList: [] })
     this.searchDB(searchValue.toLowerCase());
   }
   searchDB(value) {
@@ -115,12 +115,17 @@ class SearchScreen extends Component {
         })
       })
     })
-    if (products.length === 0 && Array.isArray(products)) {
-      this.setState({
-        isLoading: false,
-        noResults: true
-      })
-    }
+    // if (products.length === 0 && Array.isArray(products)) {
+    //   this.setState({
+    //     isLoading: false,
+    //     noResults: true
+    //   })
+    // } else {
+    //   this.setState({
+    //     isLoading: false,
+    //     noResults: false,
+    //   })
+    // }
   }
   componentDidMount() {
     this.props.navigation.setParams({
@@ -130,20 +135,20 @@ class SearchScreen extends Component {
     })
   }
   render() {
-    const productsDB = this.state.searchList
-
+    const productsDB = this.state.searchList;
+    const { isLoading, noResults, searchValue } = this.state;
     return (
       <View style={{ flex: 1 }} backgroundColor="rgb(230,230,230)">
-        {this.state.isLoading ?
+        {isLoading ?
           (<View
             style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <ActivityIndicator size="large" color="red" />
           </View>)
           :
           (<View>
-            {this.state.noResults ?
+            {noResults ?
               (<View>
-                <Text>No results</Text>
+                <Text>No results for {searchValue}</Text>
               </View>)
               :
               (<VirtualizedList

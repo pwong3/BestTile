@@ -8,13 +8,14 @@ import {
   TouchableOpacity,
   StatusBar,
 } from 'react-native';
+import fire from '../config/fire';
 import { NewTilesCard, HomePromoCard, MapCard, ShopDeptsCard } from '../cards';
 
 class Home extends Component {
   static navigationOptions = {
     //headerTransparent: true
     title: 'Welcome to Best Tile',
-    headerStyle: { 
+    headerStyle: {
       backgroundColor: 'red',
       height: 50,
     },
@@ -24,7 +25,41 @@ class Home extends Component {
       fontSize: 20,
     },
   };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      ezWedge: [],
+    }
+  }
+  componentDidMount() {
+    const rootRef = fire.database().ref();
+    const deptRef = rootRef.child('Department');
+    const ToolsDeptRef = deptRef.child('Tools');
+    const ezWedgeRef = ToolsDeptRef.child('-M8OheW0I7Q1blGE9nVL');
+    ezWedgeRef.once('value', (prodSnap) => {
+      const ezWedge = [];
+      ezWedge.push({
+        key: prodSnap.key,
+          imageUrl: prodSnap.val().imageUrl,
+          productBrand: prodSnap.val().productBrand,
+          productColor: prodSnap.val().productColor,
+          productDepartment: prodSnap.val().productDepartment,
+          productDescription: prodSnap.val().productDescription,
+          productMadeIn: prodSnap.val().productMadeIn,
+          productMaterial: prodSnap.val().productMaterial,
+          productModelNumber: prodSnap.val().productModelNumber,
+          productName: prodSnap.val().productName,
+          productPrice: prodSnap.val().productPrice,
+          productSize: prodSnap.val().productSize,
+          productWidth: prodSnap.val().productWidth,
+          productLength: prodSnap.val().productLength,
+          sortKey: prodSnap.val().sortKey,
+      });
+      this.setState({
+        ezWedge: ezWedge,
+      })
+    })
+  }
   render() {
     return (
       <ScrollView
@@ -34,7 +69,7 @@ class Home extends Component {
         <StatusBar backgroundColor="rgb(190,0,0)" />
         {/*ImageBackground is the Header picture*/}
         <ImageBackground
-          source={require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/bt_shop.jpg')}
+          source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/bt_shop.jpg')}
           style={{ height: 180 }}>
           <View>
             <View
@@ -46,7 +81,7 @@ class Home extends Component {
               <Image
                 style={{ width: '40%', borderRadius: 2 }}
                 resizeMode={'contain'}
-                source={require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/BestTileLogo.jpg')}
+                source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/BestTileLogo.jpg')}
               />
             </View>
           </View>
@@ -65,7 +100,11 @@ class Home extends Component {
         </TouchableOpacity>
 
         <MapCard navigation={this.props.navigation} />
-        <HomePromoCard />
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('ProductItem', {itemPassed: this.state.ezWedge[0]})}>
+          <HomePromoCard />
+        </TouchableOpacity>
+
       </ScrollView>
     );
   }

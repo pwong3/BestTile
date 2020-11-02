@@ -119,10 +119,30 @@ const FavoritesStackNavigator = createStackNavigator({
           onPress={() => navigation.goBack(null)}
         />
       ),
+      headerRight: (
+        <MatIcon
+          style={{ margin: 15 }}
+          name={'magnify'}
+          color={'white'}
+          size={25}
+          onPress={() => navigation.navigate('SearchScreen')}
+        />
+      ),
     }),
   },
   ProductItem: {
     screen: ProductItemScreen,
+  },
+  SearchScreen: {
+    screen: SearchScreen,
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: (
+        <HeaderBackButton
+          tintColor="white"
+          onPress={() => navigation.goBack(null)}
+        />
+      ),
+    }),
   },
 },
   {
@@ -177,6 +197,15 @@ const NewProdsStackNavigator = createStackNavigator(
             onPress={() => navigation.goBack(null)}
           />
         ),
+        headerRight: (
+          <MatIcon
+            style={{ margin: 15 }}
+            name={'magnify'}
+            color={'white'}
+            size={25}
+            onPress={() => navigation.navigate('SearchScreen')}
+          />
+        ),
       }),
     },
     NewProdsList: {
@@ -184,6 +213,17 @@ const NewProdsStackNavigator = createStackNavigator(
     },
     ProductItem: {
       screen: ProductItemScreen,
+    },
+    SearchScreen: {
+      screen: SearchScreen,
+      navigationOptions: ({ navigation }) => ({
+        headerLeft: (
+          <HeaderBackButton
+            tintColor="white"
+            onPress={() => navigation.goBack(null)}
+          />
+        ),
+      }),
     },
   },
   {
@@ -315,7 +355,7 @@ const DrawerContent = (props) => (
     <Image
       style={{ width: '40%', height: '33%', marginLeft: 20 }}
       resizeMode={'contain'}
-      source={require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/BTIcon.png')}
+      source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/BTIcon.png')}
     />
     <DrawerItems {...props} />
   </View>
@@ -326,8 +366,8 @@ const DrawerNavigator = createDrawerNavigator(
     Home: {
       screen: TabsNavigator,
     },
-    Products: {
-      screen: TabsNavigator,
+    'Products': {
+      screen: ProductsStackNavigator,
     },
     New: {
       screen: NewProdsStackNavigator,

@@ -1,22 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
 import {
-  View,
   Text,
   ScrollView,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-  Button,
+  Linking
 } from 'react-native';
-import { Card, CardSection } from '../components/common';
+import { Card } from '../components/common';
 
 class PrivacyPolicyScreen extends Component {
   static navigationOptions = {
     title: 'Privacy Policy',
-    headerStyle: { 
+    headerStyle: {
       backgroundColor: 'red',
-      height: 50 
+      height: 50
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -27,16 +23,31 @@ class PrivacyPolicyScreen extends Component {
 
   render() {
     const { cardTextStyle } = styles;
-
+    const Bold = (props) =>
+      <Text
+        style={{
+          fontWeight: 'bold',
+          textDecorationLine: 'underline'
+        }}>
+        {props.children}
+      </Text>
+    const GooglePlayServicesLink = (props) =>
+      <Text
+        style={{color: 'red'}}
+        onPress={() =>
+          Linking.openURL('https://policies.google.com/privacy')}>
+        {props.children}
+      </Text>
     return (
       <ScrollView
         backgroundColor="rgb(230,230,230)" //background color under the cards
       >
         <Card>
           <Text style={{ margin: 5 }}>
-            Best Tile Inc built the Best Tile app as a Free app. This SERVICE is
-            provided by Best Tile Inc at no cost and is intended for use as is.
+            <Bold>Privacy Policy</Bold>{'\n'}
             {'\n'}
+            Best Tile Inc built the Best Tile app as a Free app. This SERVICE is
+            provided by Best Tile Inc at no cost and is intended for use as is.{'\n'}
             {'\n'}
             This page is used to inform visitors regarding our policies with the
             collection, use, and disclosure of Personal Information if anyone
@@ -52,7 +63,7 @@ class PrivacyPolicyScreen extends Component {
             our Terms and Conditions, which is accessible at Best Tile unless
             otherwise defined in this Privacy Policy.{'\n'}
             {'\n'}
-            Information Collection and Use{'\n'}
+            <Bold>Information Collection and Use</Bold>{'\n'}
             {'\n'}
             For a better experience, while using our Service, we may require you
             to provide us with certain personally identifiable information. The
@@ -65,9 +76,9 @@ class PrivacyPolicyScreen extends Component {
             Link to privacy policy of third party service providers used by the
             app{'\n'}
             {'\n'}
-            Google Play Services{'\n'}
+            {`\u2022`}{`\u2008`}<GooglePlayServicesLink>Google Play Services</GooglePlayServicesLink>{'\n'}
             {'\n'}
-            Log Data{'\n'}
+            <Bold>Log Data</Bold>{'\n'}
             {'\n'}
             We want to inform you that whenever you use our Service, in a case
             of an error in the app we collect data and information (through
@@ -77,7 +88,7 @@ class PrivacyPolicyScreen extends Component {
             the app when utilizing our Service, the time and date of your use of
             the Service, and other statistics.{'\n'}
             {'\n'}
-            Cookies{'\n'}
+            <Bold>Cookies</Bold>{'\n'}
             {'\n'}
             Cookies are files with a small amount of data that are commonly used
             as anonymous unique identifiers. These are sent to your browser from
@@ -91,18 +102,18 @@ class PrivacyPolicyScreen extends Component {
             being sent to your device. If you choose to refuse our cookies, you
             may not be able to use some portions of this Service.{'\n'}
             {'\n'}
-            Service Providers{'\n'}
+            <Bold>Service Providers</Bold>{'\n'}
             {'\n'}
             We may employ third-party companies and individuals due to the
             following reasons:{'\n'}
             {'\n'}
-            To facilitate our Service;{'\n'}
+            {`\u2022`}{`\u2008`}To facilitate our Service;{'\n'}
             {'\n'}
-            To provide the Service on our behalf;{'\n'}
+            {`\u2022`}{`\u2008`}To provide the Service on our behalf;{'\n'}
             {'\n'}
-            To perform Service-related services; or{'\n'}
+            {`\u2022`}{`\u2008`}To perform Service-related services; or{'\n'}
             {'\n'}
-            To assist us in analyzing how our Service is used.{'\n'}
+            {`\u2022`}{`\u2008`}To assist us in analyzing how our Service is used.{'\n'}
             {'\n'}
             We want to inform users of this Service that these third parties
             have access to your Personal Information. The reason is to perform
@@ -110,7 +121,7 @@ class PrivacyPolicyScreen extends Component {
             obligated not to disclose or use the information for any other
             purpose.{'\n'}
             {'\n'}
-            Security{'\n'}
+            <Bold>Security</Bold>{'\n'}
             {'\n'}
             We value your trust in providing us your Personal Information, thus
             we are striving to use commercially acceptable means of protecting
@@ -118,7 +129,7 @@ class PrivacyPolicyScreen extends Component {
             or method of electronic storage is 100% secure and reliable, and we
             cannot guarantee its absolute security.{'\n'}
             {'\n'}
-            Links to Other Sites{'\n'}
+            <Bold>Links to Other Sites</Bold>{'\n'}
             {'\n'}
             This Service may contain links to other sites. If you click on a
             third-party link, you will be directed to that site. Note that these
@@ -127,7 +138,7 @@ class PrivacyPolicyScreen extends Component {
             control over and assume no responsibility for the content, privacy
             policies, or practices of any third-party sites or services.{'\n'}
             {'\n'}
-            Children’s Privacy{'\n'}
+            <Bold>Children’s Privacy</Bold>{'\n'}
             {'\n'}
             These Services do not address anyone under the age of 13. We do not
             knowingly collect personally identifiable information from children
@@ -137,7 +148,7 @@ class PrivacyPolicyScreen extends Component {
             child has provided us with personal information, please contact us
             so that we will be able to do necessary actions.{'\n'}
             {'\n'}
-            Changes to This Privacy Policy{'\n'}
+            <Bold>Changes to This Privacy Policy</Bold>{'\n'}
             {'\n'}
             We may update our Privacy Policy from time to time. Thus, you are
             advised to review this page periodically for any changes. We will
@@ -145,7 +156,7 @@ class PrivacyPolicyScreen extends Component {
             page. These changes are effective immediately after they are posted
             on this page.{'\n'}
             {'\n'}
-            Contact Us{'\n'}
+            <Bold>Contact Us</Bold>{'\n'}
             {'\n'}
             If you have any questions or suggestions about our Privacy Policy,
             do not hesitate to contact us at customerservice@besttilesf.com.
