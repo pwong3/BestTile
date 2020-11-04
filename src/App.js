@@ -261,9 +261,9 @@ const HomeStackNavigator = createStackNavigator({
   SCDetails: {
     screen: SCDetailsScreen,
   },
-  // ProductItem: {
-  //   screen: ProductItemScreen,
-  // },
+  ProductItem: {
+    screen: ProductItemScreen,
+  },
   SearchScreen: {
     screen: SearchScreen,
     navigationOptions: ({ navigation }) => ({

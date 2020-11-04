@@ -13,18 +13,18 @@ import ProductListItem from '../components/ProductListItem';
 import SearchBar from '../components/SearchBar';
 
 const depts = [
-  // 'Tiles',
-  // 'Stone Tiles',
+  'Tiles',
+  'Stone Tiles',
   'Bath Vanities',
-  // 'Vanity Tops',
+  'Vanity Tops',
   'Faucets',
   'Schluter Systems',
-  // 'Countertops',
+  'Countertops',
   'Kitchen Sinks',
-  // 'Kitchen Cabinets',
+  'Kitchen Cabinets',
   'Toilets',
   'Grout & Mortars',
-  // 'Cleaners & Sealers',
+  'Cleaners & Sealers',
   'Tools',
   'Accessories',
 ];
@@ -82,7 +82,7 @@ class SearchScreen extends Component {
       productRef.on('value', (deptSnapshot) => {
         deptSnapshot.forEach((prodSnapshot) => {
           for (var i = 0; i < searchTerms.length; i++) {
-            if (prodSnapshot.val().searchKeywords.includes(searchTerms[i])) {
+            if (prodSnapshot.val().searchKeywords.toLowerCase().includes(searchTerms[i])) {
               this.setState({
                 pushProduct: true,
               })
@@ -97,6 +97,7 @@ class SearchScreen extends Component {
             products.push({
               key: prodSnapshot.key,
               productBrand: prodSnapshot.val().productBrand,
+              productDepartment: prodSnapshot.val().productDepartment,
               productName: prodSnapshot.val().productName,
               productModelNumber: prodSnapshot.val().productModelNumber,
               productMaterial: prodSnapshot.val().productMaterial,
