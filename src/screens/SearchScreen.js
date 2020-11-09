@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {
-  TextInput,
   Text,
-  TouchableOpacity,
   VirtualizedList,
   View,
   ActivityIndicator,
@@ -35,6 +33,7 @@ class SearchScreen extends Component {
         searchValue={navigation.getParam('searchValue')}
         onChangeText={navigation.getParam('onChangeText')}
         onSubmitEditing={navigation.getParam('onSubmitEditing')}
+        clearText={navigation.getParam('clearText')}
       />,
       headerStyle: {
         backgroundColor: 'red',
@@ -54,7 +53,8 @@ class SearchScreen extends Component {
     this.state = {
       searchList: [],
       isLoading: false,
-      searchValue: null,
+      searchValue: undefined,
+      displayNoResultValue: '',
       pushProduct: false,
       noResults: false,
     };
@@ -67,18 +67,16 @@ class SearchScreen extends Component {
     if (searchValue === '' || searchValue === null) {
       return
     }
-    this.setState({ isLoading: true, searchList: [] })
+    this.setState({ isLoading: true, searchList: [], displayNoResultValue: searchValue })
     this.searchDB(searchValue.toLowerCase());
   }
-  searchDB(value) {
+  searchDB(searchValue) {
     const rootRef = fire.database().ref();
     const deptRef = rootRef.child('Department');
     const products = [];
-    let searchTerms = value.split(' ');
+    let searchTerms = searchValue.split(' ');
     depts.forEach((dept) => {
-      const productRef = deptRef
-        .child(dept)
-        .orderByKey();
+      const productRef = deptRef.child(dept).orderByKey();
       productRef.on('value', (deptSnapshot) => {
         deptSnapshot.forEach((prodSnapshot) => {
           for (var i = 0; i < searchTerms.length; i++) {
@@ -93,7 +91,7 @@ class SearchScreen extends Component {
               break;
             }
           }
-          if (this.state.pushProduct === true) {
+          if (this.state.pushProduct) {
             products.push({
               key: prodSnapshot.key,
               productBrand: prodSnapshot.val().productBrand,
@@ -107,26 +105,29 @@ class SearchScreen extends Component {
               productDescription: prodSnapshot.val().productDescription,
               imageUrl: prodSnapshot.val().imageUrl,
             });
-            this.setState({
-              searchList: products,
-              isLoading: false,
-              noResults: false,
-            });
           }
         })
+        this.setState({
+          searchList: products,
+          isLoading: false,
+          noResults: false,
+        });
+        // if (products.length === 0) {
+        //   console.log('no prods')
+        //   this.setState({
+        //     // isLoading: false,
+        //     noResults: true
+        //   })
+        // } else {
+        //   this.setState({
+        //     // isLoading: false,
+        //     noResults: false,
+        //   })
+        // }
       })
+
     })
-    // if (products.length === 0 && Array.isArray(products)) {
-    //   this.setState({
-    //     isLoading: false,
-    //     noResults: true
-    //   })
-    // } else {
-    //   this.setState({
-    //     isLoading: false,
-    //     noResults: false,
-    //   })
-    // }
+
   }
   componentDidMount() {
     this.props.navigation.setParams({
@@ -135,41 +136,49 @@ class SearchScreen extends Component {
       onSubmitEditing: this.onSubmitEditing,
     })
   }
-  render() {
+  renderResults = () => {
     const productsDB = this.state.searchList;
-    const { isLoading, noResults, searchValue } = this.state;
+    const { isLoading, noResults, displayNoResultValue } = this.state;
+    if (isLoading) {
+      return (
+        <View
+          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <ActivityIndicator size="large" color="red" />
+        </View>
+      )
+    }
+    if (noResults) {
+      console.log(noResults)
+      return (
+        <View>
+          <Text>No results for {displayNoResultValue}</Text>
+        </View>
+      )
+    } else {
+      return (
+        <VirtualizedList
+          // style={{ marginBottom: 40 }}
+          data={productsDB}
+          keyExtractor={(item) => item.key}
+          getItem={(data, index) => data[index]}
+          getItemCount={(data) => data.length}
+          maxToRenderPerBatch={10}
+          renderItem={({ item }) => (
+            <Card>
+              <ProductListItem
+                itemScreen={'ProductItem'}
+                navigation={this.props.navigation} //passes navigation props to FlatListItem
+                item={item}
+              />
+            </Card>)}
+        />
+      )
+    }
+  }
+  render() {
     return (
       <View style={{ flex: 1 }} backgroundColor="rgb(230,230,230)">
-        {isLoading ?
-          (<View
-            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <ActivityIndicator size="large" color="red" />
-          </View>)
-          :
-          (<View>
-            {noResults ?
-              (<View>
-                <Text>No results for {searchValue}</Text>
-              </View>)
-              :
-              (<VirtualizedList
-                // style={{ marginBottom: 40 }}
-                data={productsDB}
-                keyExtractor={(item) => item.key}
-                getItem={(data, index) => data[index]}
-                getItemCount={(data) => data.length}
-                maxToRenderPerBatch={10}
-                renderItem={({ item }) => (
-                  <Card>
-                    <ProductListItem
-                      itemScreen={'ProductItem'}
-                      navigation={this.props.navigation} //passes navigation props to FlatListItem
-                      item={item}
-                    />
-                  </Card>)}
-              />)}
-          </View>)
-        }
+        {this.renderResults()}
       </View>
     );
   }

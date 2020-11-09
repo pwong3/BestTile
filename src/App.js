@@ -353,7 +353,7 @@ const TabsNavigator = createBottomTabNavigator(
 const DrawerContent = (props) => (
   <View>
     <Image
-      style={{ width: '40%', height: '33%', marginLeft: 20 }}
+      style={{ width: '40%', height: '33%', marginTop: 20, marginLeft: 60 }}
       resizeMode={'contain'}
       source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/BTIcon.png')}
     />
@@ -420,6 +420,9 @@ const DrawerNavigator = createDrawerNavigator(
       activeTintColor: 'red',
       inactiveTintColor: 'black',
       activeBackgroundColor: 'transparent',
+      itemsContainerStyle: {
+        marginLeft: 10,
+      },
     },
   },
 );
