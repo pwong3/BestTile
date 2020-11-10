@@ -40,6 +40,7 @@ class MapCard extends Component {
             </Text>
           </CardSection>
           <MapView
+            scrollEnabled={false}
             liteMode={true}
             provider={PROVIDER_GOOGLE}
             ref={(ref) => {
