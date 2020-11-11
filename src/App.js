@@ -8,9 +8,6 @@ import {
   NewProdsScreen,
   NewProdsListScreen,
   FavoritesScreen,
-  AuthLoadingScreen,
-  AccountScreen,
-  AuthAccountScreen,
   ProductsDeptScreen,
   TilesSubDeptScreen,
   ProductsListScreen,
@@ -275,20 +272,6 @@ const HomeStackNavigator = createStackNavigator({
       ),
     }),
   },
-  // ProductsDept: {
-  //   screen: ProductsDeptScreen,
-  //   navigationOptions: ({ navigation }) => ({
-  //     headerRight: (
-  //       <MatIcon
-  //         style={{ margin: 15 }}
-  //         name={'magnify'}
-  //         color={'white'}
-  //         size={25}
-  //         onPress={() => navigation.navigate('SearchScreen')}
-  //       />
-  //     ),
-  //   }),
-  // },
 },
   {
     headerLayoutPreset: 'center'

@@ -13,6 +13,7 @@ import {
 import AsyncStorage from '@react-native-community/async-storage';
 import { Card, Input, CardSection } from '../components/common';
 import MatIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import noImage from '../resources/noImage.png';
 
 class ProductItem extends PureComponent {
   constructor(props) {
@@ -100,6 +101,10 @@ class ProductItem extends PureComponent {
     const { itemPassed } = this.props;
     //split to separate each line
     const descSplit = itemPassed.productDescription.split('\n');
+    let url = itemPassed.imageUrl[0].url === '/static/media/noImage.c0c008e2.png' ?
+      'https://firebasestorage.googleapis.com/v0/b/besttile-a546b.appspot.com/o/noImage.png?alt=media&token=ba6891e1-beb2-432b-843f-55d7efd07f06'
+      :
+      itemPassed.imageUrl[0].url;
     return (
       <ScrollView backgroundColor="white">
         <CardSection style={cardSectionStyle}>
@@ -148,7 +153,7 @@ class ProductItem extends PureComponent {
             <View>
               <Image
                 key={itemPassed.imageUrl[0].name}
-                source={{ uri: itemPassed.imageUrl[0].url }}
+                source={{ uri: url }}
                 style={{
                   width: 300,
                   height: 300,

@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+import noImage from '../resources/noImage.png';
 
 class ProductListItem extends PureComponent {
   render() {
@@ -20,6 +21,9 @@ class ProductListItem extends PureComponent {
     const { item, itemScreen } = this.props;
     const widthTilesName = Dimensions.get('window').width - 125;
     const widthProductName = Dimensions.get('window').width - 145;
+    let url = item.imageUrl[0].url === '/static/media/noImage.c0c008e2.png' ?
+      'https://firebasestorage.googleapis.com/v0/b/besttile-a546b.appspot.com/o/noImage.png?alt=media&token=ba6891e1-beb2-432b-843f-55d7efd07f06'
+      : item.imageUrl[0].url;
     return (
       <TouchableOpacity
         onPress={() =>
@@ -33,7 +37,7 @@ class ProductListItem extends PureComponent {
             paddingBottom: 10,
           }}>
           <View>
-            <Image source={{ uri: item.imageUrl[0].url }} style={imageStyle} />
+            <Image source={{ uri: url }} style={imageStyle} />
           </View>
           <View
             style={{
@@ -51,17 +55,17 @@ class ProductListItem extends PureComponent {
                 </View>
               </View>
             ) : (
-              <View>
-                <Text style={productBrandText}>{item.productBrand}</Text>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    width: widthProductName,
-                  }}>
-                  <Text style={productNameText}>{item.productName}</Text>
+                <View>
+                  <Text style={productBrandText}>{item.productBrand}</Text>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      width: widthProductName,
+                    }}>
+                    <Text style={productNameText}>{item.productName}</Text>
+                  </View>
                 </View>
-              </View>
-            )}
+              )}
             {item.productModelNumber === '' ? null : (
               <Text style={productDescText}>
                 Model# {item.productModelNumber}

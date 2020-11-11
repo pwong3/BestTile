@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FlatList, ActivityIndicator, View } from 'react-native';
-import { _ShowAddTileButton } from '../helperFunctions';
 import fire from '../config/fire';
 import ProductListItem from '../components/ProductListItem';
 import { Card } from '../components/common';
