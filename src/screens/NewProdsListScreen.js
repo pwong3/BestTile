@@ -21,6 +21,9 @@ class NewProdsListScreen extends Component {
       cleanerSealersList: [],
       groutMortarsList: [],
       accessoriesList: [],
+      stoneStepsList: [],
+      showerTubEnclosuresList: [],
+      porcelainPanelsList: [],
       isLoaded: false,
     };
   }
@@ -72,6 +75,18 @@ class NewProdsListScreen extends Component {
       .limitToLast(10);
     const accessoriesRef = deptRef
       .child('Accessories')
+      .orderByChild('key')
+      .limitToLast(10);
+    const stoneStepsRef = deptRef
+      .child('Stone Steps')
+      .orderByChild('key')
+      .limitToLast(10);
+    const showerTubEncRef = deptRef
+      .child('Shower & Tub Enclosures')
+      .orderByChild('key')
+      .limitToLast(10);
+    const porcelainPanelsRef = deptRef
+      .child('Porcelain Panels')
       .orderByChild('key')
       .limitToLast(10);
     faucetsRef.once('value', (deptSnapshot) => {
@@ -374,6 +389,78 @@ class NewProdsListScreen extends Component {
         });
       });
     });
+    stoneStepsRef.once('value', (deptSnapshot) => {
+      const stoneStepsProd = [];
+      deptSnapshot.forEach((product) => {
+        stoneStepsProd.push({
+          key: product.key,
+          imageUrl: product.val().imageUrl,
+          productBrand: product.val().productBrand,
+          productColor: product.val().productColor,
+          productDepartment: product.val().productDepartment,
+          productDescription: product.val().productDescription,
+          productMadeIn: product.val().productMadeIn,
+          productMaterial: product.val().productMaterial,
+          productModelNumber: product.val().productModelNumber,
+          productName: product.val().productName,
+          productPrice: product.val().productPrice,
+          productSize: product.val().productSize,
+          sortKey: product.val().sortKey,
+        });
+        this.setState({
+          stoneStepsList: stoneStepsProd,
+          isLoaded: true,
+        });
+      });
+    });
+    showerTubEncRef.once('value', (deptSnapshot) => {
+      const showerTubProd = [];
+      deptSnapshot.forEach((product) => {
+        showerTubProd.push({
+          key: product.key,
+          imageUrl: product.val().imageUrl,
+          productBrand: product.val().productBrand,
+          productColor: product.val().productColor,
+          productDepartment: product.val().productDepartment,
+          productDescription: product.val().productDescription,
+          productMadeIn: product.val().productMadeIn,
+          productMaterial: product.val().productMaterial,
+          productModelNumber: product.val().productModelNumber,
+          productName: product.val().productName,
+          productPrice: product.val().productPrice,
+          productSize: product.val().productSize,
+          sortKey: product.val().sortKey,
+        });
+        this.setState({
+          showerTubEnclosuresList: showerTubProd,
+          isLoaded: true,
+        });
+      });
+    });
+    porcelainPanelsRef.once('value', (deptSnapshot) => {
+      const porcelainPanelProd = [];
+      deptSnapshot.forEach((product) => {
+        porcelainPanelProd.push({
+          key: product.key,
+          imageUrl: product.val().imageUrl,
+          productBrand: product.val().productBrand,
+          productColor: product.val().productColor,
+          productDepartment: product.val().productDepartment,
+          productDescription: product.val().productDescription,
+          productMadeIn: product.val().productMadeIn,
+          productMaterial: product.val().productMaterial,
+          productModelNumber: product.val().productModelNumber,
+          productName: product.val().productName,
+          productPrice: product.val().productPrice,
+          productSize: product.val().productSize,
+          sortKey: product.val().sortKey,
+        });
+        this.setState({
+          porcelainPanelsList: porcelainPanelProd,
+          isLoaded: true,
+        });
+      });
+    });
   }
 
   render() {
@@ -389,7 +476,13 @@ class NewProdsListScreen extends Component {
                       this.state.vanTopsList.concat(
                         this.state.cleanerSealersList.concat(
                           this.state.groutMortarsList.concat(
-                            this.state.accessoriesList,
+                            this.state.accessoriesList.concat(
+                              this.state.stoneStepsList.concat(
+                                this.state.showerTubEnclosuresList.concat(
+                                  this.state.porcelainPanelsList
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -411,6 +504,7 @@ class NewProdsListScreen extends Component {
           <View backgroundColor="rgb(230,230,230)">
             <FlatList
               data={productsDBsort}
+              removeClippedSubviews={true}
               renderItem={({ item }) => (
                 <Card>
                   <ProductListItem
@@ -423,10 +517,10 @@ class NewProdsListScreen extends Component {
             />
           </View>
         ) : (
-          <View>
-            <ActivityIndicator size="large" color="red" />
-          </View>
-        )}
+            <View>
+              <ActivityIndicator size="large" color="red" />
+            </View>
+          )}
       </View>
     );
   }

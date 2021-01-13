@@ -198,6 +198,7 @@ class ProductsListScreen extends Component {
               getItem={(data, index) => data[index]}
               getItemCount={(data) => data.length}
               maxToRenderPerBatch={10}
+              removeClippedSubviews={true}
               renderItem={({ item }) => (
                 <Card>
                   <ProductListItem

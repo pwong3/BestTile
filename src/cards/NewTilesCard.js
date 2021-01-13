@@ -14,7 +14,7 @@ class NewTilesCard extends Component {
             height: 220,
           }}
           resizeMode={'cover'}
-          source={require('/Users/patri/Documents/React Native Projects/BestTile/src/resources/newTiles.jpg')}>
+          source={require('/Users/pat/Documents/React Native Projects/BestTile/src/resources/newTiles.jpg')}>
           <Text style={cardTextStyle}>NEW!</Text>
         </ImageBackground>
       </Card>
