@@ -116,7 +116,8 @@ class ProductItem extends PureComponent {
             }}>
             <View style={{ flexDirection: 'column', flex: 1 }}>
               {itemPassed.productBrand === '' ||
-                itemPassed.productDepartment === 'Tiles' ? (
+                itemPassed.productDepartment === 'Tiles' ||
+                  itemPassed.productDepartment === 'Porcelain Panels' ? (
                   <Text style={productBrandText}>{itemPassed.productName}</Text>
                 ) : (
                   <View>

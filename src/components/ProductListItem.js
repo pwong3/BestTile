@@ -44,7 +44,7 @@ class ProductListItem extends PureComponent {
               flexDirection: 'column',
               paddingTop: 4,
             }}>
-            {item.productBrand === '' || item.productDepartment === 'Tiles' ? (
+            {item.productBrand === '' || item.productDepartment === 'Tiles' || item.productDepartment === 'Porcelain Panels' ? (
               <View>
                 <View
                   style={{
