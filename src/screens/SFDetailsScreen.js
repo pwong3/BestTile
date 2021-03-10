@@ -87,7 +87,7 @@ class SFDetailsScreen extends Component {
           </Text>
         </CardSection>
         <CardSection style={cardSectionStyle}>
-          <StoreHours />
+          <StoreHours store={'SF'}/>
         </CardSection>
         <CardSection style={cardSectionStyle}>
           <Holidays />

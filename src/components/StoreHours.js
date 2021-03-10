@@ -33,7 +33,7 @@ class StoreHours extends Component {
         const store = this.props.store;
         if (store === 'SC') {
             this.scStoreHours();
-        } else {
+        } else if (store === 'SF') {
             this.sfStoreHours();
         }
     }
