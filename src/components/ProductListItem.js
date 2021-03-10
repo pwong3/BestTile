@@ -15,6 +15,7 @@ class ProductListItem extends PureComponent {
     const {
       productBrandText,
       productNameText,
+      productLabelText,
       productDescText,
       imageStyle,
     } = styles; //object destructuring
@@ -67,18 +68,30 @@ class ProductListItem extends PureComponent {
                 </View>
               )}
             {item.productModelNumber === '' ? null : (
-              <Text style={productDescText}>
-                Model# {item.productModelNumber}
-              </Text>
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={productLabelText}>Model#</Text>
+                <Text style={productDescText}>
+                  {item.productModelNumber}
+                </Text>
+              </View>
             )}
             {item.productSize === '' ? null : (
-              <Text style={productDescText}>{item.productSize}</Text>
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={productLabelText}>Size:</Text>
+                <Text style={productDescText}>{item.productSize}</Text>
+              </View>
             )}
             {item.productMaterial === '' ? null : (
-              <Text style={productDescText}>{item.productMaterial}</Text>
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={productLabelText}>Material:</Text>
+                <Text style={productDescText}>{item.productMaterial}</Text>
+              </View>
             )}
             {item.productMadeIn === '' ? null : (
-              <Text style={productDescText}>Made in {item.productMadeIn}</Text>
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={productLabelText}>Made in:</Text>
+                <Text style={productDescText}>{item.productMadeIn}</Text>
+              </View>
             )}
           </View>
         </View>
@@ -91,20 +104,28 @@ const styles = {
   productBrandText: {
     flex: 1,
     color: 'black',
-    paddingLeft: 10,
+    paddingLeft: 5,
     fontSize: 16,
     fontWeight: 'bold',
   },
   productNameText: {
     flex: 1,
     color: 'black',
-    paddingLeft: 10,
+    paddingLeft: 5,
     fontSize: 16,
   },
-  productDescText: {
+  productLabelText: {
     color: 'black',
-    paddingLeft: 10,
-    paddingTop: 0,
+    paddingLeft: 5,
+    paddingTop: 1,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  productDescText: {
+    flex: 1,
+    color: 'black',
+    paddingLeft: 5,
+    paddingTop: 1,
     fontSize: 16,
   },
   productPriceText: {

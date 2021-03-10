@@ -134,8 +134,8 @@ android {
         applicationId "com.besttile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 010001
-        versionName "1.0.1"
+        versionCode 010002
+        versionName "1.0.2"
         multiDexEnabled true
     }
     splits {

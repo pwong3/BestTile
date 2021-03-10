@@ -41,6 +41,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is not needed. This request has popped up due to a 3rd party framework used by the app that does not need you to reveal your location.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

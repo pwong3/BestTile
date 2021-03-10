@@ -278,6 +278,8 @@ const styles = {
     fontWeight: 'bold',
   },
   productDescText: {
+    flex: 1,
+    flexWrap: 'wrap',
     color: 'black',
     paddingLeft: 10,
     paddingTop: 1,

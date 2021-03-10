@@ -25,6 +25,9 @@ const depts = [
   'Cleaners & Sealers',
   'Tools',
   'Accessories',
+  'Porcelain Panels',
+  'Shower & Tub Encelosures',
+  'Stone Steps',
 ];
 class SearchScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -100,6 +103,7 @@ class SearchScreen extends Component {
               productModelNumber: prodSnapshot.val().productModelNumber,
               productMaterial: prodSnapshot.val().productMaterial,
               productPrice: prodSnapshot.val().productPrice,
+              productColor: prodSnapshot.val().productColor,
               productMadeIn: prodSnapshot.val().productMadeIn,
               productSize: prodSnapshot.val().productSize,
               productDescription: prodSnapshot.val().productDescription,

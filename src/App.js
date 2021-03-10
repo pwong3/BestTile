@@ -64,12 +64,45 @@ const ProductsStackNavigator = createStackNavigator({
   },
   TilesSubDept: {
     screen: TilesSubDeptScreen,
+    navigationOptions: ({ navigation }) => ({
+      headerRight: (
+        <MatIcon
+          style={{ margin: 15 }}
+          name={'magnify'}
+          color={'white'}
+          size={25}
+          onPress={() => navigation.navigate('SearchScreen')}
+        />
+      ),
+    }),
   },
   ProductsList: {
     screen: ProductsListScreen,
+    navigationOptions: ({ navigation }) => ({
+      headerRight: (
+        <MatIcon
+          style={{ margin: 15 }}
+          name={'magnify'}
+          color={'white'}
+          size={25}
+          onPress={() => navigation.navigate('SearchScreen')}
+        />
+      ),
+    }),
   },
   ProductItem: {
     screen: ProductItemScreen,
+    navigationOptions: ({ navigation }) => ({
+      headerRight: (
+        <MatIcon
+          style={{ margin: 15 }}
+          name={'magnify'}
+          color={'white'}
+          size={25}
+          onPress={() => navigation.navigate('SearchScreen')}
+        />
+      ),
+    }),
   },
   SearchScreen: {
     screen: SearchScreen,
@@ -129,6 +162,17 @@ const FavoritesStackNavigator = createStackNavigator({
   },
   ProductItem: {
     screen: ProductItemScreen,
+    navigationOptions: ({ navigation }) => ({
+      headerRight: (
+        <MatIcon
+          style={{ margin: 15 }}
+          name={'magnify'}
+          color={'white'}
+          size={25}
+          onPress={() => navigation.navigate('SearchScreen')}
+        />
+      ),
+    }),
   },
   SearchScreen: {
     screen: SearchScreen,
@@ -207,9 +251,31 @@ const NewProdsStackNavigator = createStackNavigator(
     },
     NewProdsList: {
       screen: NewProdsListScreen,
+      navigationOptions: ({ navigation }) => ({
+        headerRight: (
+          <MatIcon
+            style={{ margin: 15 }}
+            name={'magnify'}
+            color={'white'}
+            size={25}
+            onPress={() => navigation.navigate('SearchScreen')}
+          />
+        ),
+      }),
     },
     ProductItem: {
       screen: ProductItemScreen,
+      navigationOptions: ({ navigation }) => ({
+        headerRight: (
+          <MatIcon
+            style={{ margin: 15 }}
+            name={'magnify'}
+            color={'white'}
+            size={25}
+            onPress={() => navigation.navigate('SearchScreen')}
+          />
+        ),
+      }),
     },
     SearchScreen: {
       screen: SearchScreen,
@@ -260,6 +326,17 @@ const HomeStackNavigator = createStackNavigator({
   },
   ProductItem: {
     screen: ProductItemScreen,
+    navigationOptions: ({ navigation }) => ({
+      headerRight: (
+        <MatIcon
+          style={{ margin: 15 }}
+          name={'magnify'}
+          color={'white'}
+          size={25}
+          onPress={() => navigation.navigate('SearchScreen')}
+        />
+      ),
+    }),
   },
   SearchScreen: {
     screen: SearchScreen,

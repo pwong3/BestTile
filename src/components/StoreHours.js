@@ -1,10 +1,42 @@
 import React, { Component } from 'react';
-import {
-    View,
-    Text,
-} from 'react-native';
+import { View, Text, } from 'react-native';
+import fire from '../config/fire';
 
 class StoreHours extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            hours: '',
+        }
+    }
+
+    scStoreHours() {
+        const rootRef = fire.database().ref();
+        const storeHoursRef = rootRef.child('StoreHours')
+        const storeRef = storeHoursRef.child('SChours');
+        this.loadHours(storeRef);
+    }
+    sfStoreHours() {
+        const rootRef = fire.database().ref();
+        const storeHoursRef = rootRef.child('StoreHours')
+        const storeRef = storeHoursRef.child('SFhours');
+        this.loadHours(storeRef);
+    }
+    loadHours(storeRef) {
+        storeRef.once('value', (hoursSnapshot) => {
+            this.setState({
+                hours: hoursSnapshot.val()
+            })
+        })
+    }
+    componentDidMount() {
+        const store = this.props.store;
+        if (store === 'SC') {
+            this.scStoreHours();
+        } else {
+            this.sfStoreHours();
+        }
+    }
     render() {
         const { cardSecTextStyle } = styles;
         const hours = '8:00 a.m. - 5:30 p.m.\n';
@@ -22,12 +54,12 @@ class StoreHours extends Component {
                         Sunday
                         </Text>
                     <Text style={{ fontSize: 16, marginLeft: 15, lineHeight: 20 }}>
-                        {hours}
-                        {hours}
-                        {hours}
-                        {hours}
-                        {hours}
-                        {hours}
+                        {this.state.hours}{'\n'}
+                        {this.state.hours}{'\n'}
+                        {this.state.hours}{'\n'}
+                        {this.state.hours}{'\n'}
+                        {this.state.hours}{'\n'}
+                        {this.state.hours}{'\n'}
                         Closed
                         </Text>
                 </View>

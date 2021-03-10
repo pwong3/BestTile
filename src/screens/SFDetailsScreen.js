@@ -48,7 +48,7 @@ class SFDetailsScreen extends Component {
             ref={(ref) => {
               this.map = ref;
             }}
-            style={{ height: 200 }}
+            style={{ height: 200, flex: 1 }}
             initialRegion={{
               latitude: LATITUDE,
               longitude: LONGITUDE,
